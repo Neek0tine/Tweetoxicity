@@ -26,8 +26,13 @@ A : Simple, as a submission for our end of semester exam. Other than that, we wo
 **Q : "I acted good in my whole Twitter journey, yet I got a bad score?"**<br>
 A : Because the program is not perfect. Machine learning technology is so hard to be evolved, as it is extremely data-driven. While there are roughly [44 Zettabyte](https://seedscientific.com/how-much-data-is-created-every-day/#:~:text=There%20are%20approximately%2044%20zettabytes%20of%20data%20in%20the%20world%20in%202020.) of data in 2020 alone, does not mean we can use all the data for this project. Data needs to be picked, cleaned, processed and finally implemented so we can achieve a good AI Model. 
 
-**Q : "The whole project could easily be done using X module, and Z method. Using all this is just a waste of time"**<br>
+**Q : "Can I use this as a proof for someone's bad behavior in real life?"**<br>
+A : What? No. Even if you had to use this and give your ex a piece of your mind, no. We do not condone any form of harassment, bullying, or even threats following the use of the app. The use of this app is for educational and entertainment purposes only. Despite the app name, the use of this app for self-evaluation or self-reflection (and the not so "self" counterpart) is NOT RECOMMENDED. There's more things to be consider for machines to assess human's personality. 
+
+**Q : "The whole project could easily be done using X module, and Z method. This is just a waste of time"**<br>
 A : That's not a question. For critics, advice and things you'd say to the developer, please use GitHub discussion function.
+
+
 
 
 ## End-User License Agreement
@@ -51,7 +56,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 
 ## Contributing
 
-Pull requests are welcome. For major changes, how-to, and in-depth explanation, please contact one of the three available authors.
+Pull requests are welcome. For major changes, how-to, and in-depth explanation, please contact one of the authors.
 ## License
 ![PyPI - License](https://img.shields.io/pypi/l/PyCl)
 <br>
