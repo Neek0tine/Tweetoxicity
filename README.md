@@ -9,7 +9,7 @@ The program mainly uses Flask as a center of its operations, which purpose is to
 The program also utilize **Twitter API** to scrap data from [Twitter](https://twitter.com/home) officially. In case of API failure or Authorization failures, **Requests** module will be used to manually scrap the data from Twitter, of course at a price of reduced request ammount and increased time interval as to not be intrusive to Twitter. 
 
 The scrapped data is then sent to the program which keeps the machine learning model, and asks the program politely to assess the given user with its already made model through extensive training. The result, having the shape of a String data is then sent back to Flask to be outputted as a readable human language to the website. The workflow of program is as follows: <br>
-<img src="https://github.com/Neek0tine/Tweetoxicity/blob/main/assets/workflow.png" alt="TweeToxicity" width="1200"/><br>
+<img src="https://github.com/Neek0tine/Tweetoxicity/blob/main/assets/workflow-02.png" alt="TweeToxicity" width="1200"/><br>
 
 The website will be made entirely with Bootstrap CSS Framework, using **Bootstrap Studio** application. The website is planned to have dynamic content movement that transforms dynamically depending on the user's device screen size. The use of dynamic and reactive website is a must since the data displayed will have different height and width, which static websites couldn't handle well. 
 
