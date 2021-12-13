@@ -36,3 +36,8 @@ def cleaning(text):
 
 def flat(t):
     return [item for sublist in t for item in sublist]
+
+
+def decode_sentiment(label):
+    sentiment_map = {0: "NEGATIVE", 2: "NEUTRAL", 4: "POSITIVE"}
+    return sentiment_map[int(label)]
