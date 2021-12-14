@@ -16,7 +16,6 @@ def load_clean_data():
     path = "clean_twitter_sentimen.csv" 
     chunks = pd.read_csv(path, chunksize=100000, encoding='ISO-8859-1')
     df = pd.concat(chunks).sample(frac=1, random_state=42).reset_index(drop=True).dropna()
-    df = df.sample(10000, random_state=42)
     print(df.head())
     
     return split_train_test(df)
@@ -75,13 +74,15 @@ def modelling(train_x_vector, test_x_vector, y_train, y_test):
     
     return saving_files(BNBmodel, SVCmodel, LRmodel)
     
-def saving_files(*args):  
+def saving_files(BNBmodel, SVCmodel, LRmodel):  
     # Model
+    
     models = {
-        "LRmodel": args[0],
-        "SVCmodel": args[1],
-        "BNBmodel": args[2]
+        "LRmodel": BNBmodel,
+        "SVCmodel": SVCmodel,
+        "BNBmodel": LRmodel
     }
+    
     file =  open('CombineModel.pkl', 'wb')
     pickle.dump(models, file)
     file.close()
