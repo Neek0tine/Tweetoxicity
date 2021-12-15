@@ -13,7 +13,7 @@ from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.model_selection import train_test_split
 
 def load_clean_data():
-    path = "clean_twitter_sentimen.csv" 
+    path = "./data/clean_twitter_sentimen.csv" 
     chunks = pd.read_csv(path, chunksize=100000, encoding='ISO-8859-1')
     df = pd.concat(chunks).sample(frac=1, random_state=42).reset_index(drop=True).dropna()
     print(df.head())
@@ -57,7 +57,7 @@ def model_Evaluate(model, name, test_x_vector, y_test):
     
 def modelling(train_x_vector, test_x_vector, y_train, y_test):
     # Naive Bayes
-    BNBmodel = BernoulliNB()
+    BNBmodel = BernoulliNB(alpha=1)
     BNBmodel.fit(train_x_vector, y_train)
     model_Evaluate(BNBmodel, "Naive Bayes", test_x_vector, y_test)
     
@@ -68,7 +68,7 @@ def modelling(train_x_vector, test_x_vector, y_train, y_test):
     model_Evaluate(SVCmodel, "SVM", test_x_vector, y_test)
     
     # Logistic Regression
-    LRmodel = LogisticRegression(max_iter=1000)
+    LRmodel = LogisticRegression(C=2, max_iter=10000)
     LRmodel.fit(train_x_vector, y_train)
     model_Evaluate(LRmodel, "Logistic Regression", test_x_vector, y_test)
     

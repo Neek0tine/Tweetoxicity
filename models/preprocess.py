@@ -5,7 +5,7 @@ import pandas as pd
 from packages.text import cleaning, decode_sentiment
 
 def load_data():
-    path = "twitter_sentiment.csv"
+    path = "./data/twitter_sentiment.csv"
     column_names = ["target", "id", "date", "flag", "user", "text"]
     chunks = pd.read_csv(path, chunksize=100000, encoding='ISO-8859-1', names=column_names)
     concat_df = pd.concat(chunks).sample(frac=1, random_state=42).reset_index(drop=True)
