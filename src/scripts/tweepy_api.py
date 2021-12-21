@@ -32,7 +32,7 @@ def _init():
 
 def get_user_stats(query=None):
     _user = None
-
+    api = _init()
     if query is None:
         _query = input("Search : ")
     else:
@@ -49,20 +49,18 @@ def get_user_stats(query=None):
     print("Following :", _user.friends_count)
     print("Account birthdate :", _user.created_at, "\n"+"-"*40, "\n")
     user = _user
-    return user
+    return user, api
 
 def get_user_tweets(user=None):
+    _user, api = get_user_stats(user)
     _count = 150
-
-    if user is None:
-        _user = get_user_stats()
 
     try:
         tweets = tweepy.Cursor(api.user_timeline, user_id=_user.id).items(_count)
         tweets_list = [[tweet.created_at, tweet.text] for tweet in tweets]
         tweets_df = pd.DataFrame(tweets_list)
-        print(tweets_df)
-        tweets_df.to_csv(f'Tweets of {_user.screen_name}.csv', index=False)
+        return tweets_df
+        # tweets_df.to_csv(f'Tweets of {_user.screen_name}.csv', index=False)
 
     except BaseException as e:
         print('failed on_status,', str(e))
@@ -82,5 +80,3 @@ if __name__== "__main__":
     print('  Tweepy version', tweepy.__version__)
     print("  https://github.com/Neek0tine/Tweetoxicity")
     print("└" + "─" * 56 + "┘")
-
-    get_user_tweets()
