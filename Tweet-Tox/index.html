@@ -13,32 +13,72 @@
 
 <body style="background: var(--blue);">
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top navbar-custom" style="background: #292F33;">
-        <div class="container"><a class="navbar-brand" href="#">Tweetox</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="#">TweeTox</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Back</a></li>
-                    <li class="nav-item"></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgb(255,255,255);">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">ABOUT</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <header class="text-center text-white masthead" style="background: url(&quot;assets/img/twitter-logo-graphic.png&quot;) center, #4ab1ff;">
+    <header class="text-center text-white masthead" style="background: url(&quot;assets/img/twitter-logo-graphic.png&quot;) center / cover, #4ab1ff;">
         <div class="masthead-content">
             <div class="container">
-                <div class="jumbotron" style="background: rgba(48,61,71,0.78);border-style: solid;">
-                    <h1 style="color: #ffffff;font-size: 60px;">*Account* Analysis</h1>
-                    <p style="color: #ffffff;font-size: 23px;">Yep ! I think *account* needs a day off...</p>
-                    <p><a class="btn btn-primary" role="button" style="background: var(--blue);border-style: none;font-size: 20px;font-family: Lato, sans-serif;margin-top: 12px;">Detailed Result</a></p>
-                </div>
+                <h1 class="masthead-heading mb-0" style="font-size: 72px;color: #fffff0;">IS AN ACCOUNT GIVING YOU A BAD INFLUENCE ?</h1>
+                <h2 class="masthead-subheading mb-0" style="font-size: 30px;color: #fffff0;">We'll check it for you !</h2><input type="text" style="width: 370.2px;height: 39px;border-style: none;"><a class="btn btn-primary btn-xl rounded-pill mt-5" role="button" href="#" style="background: var(--blue);padding: 13px 20px;margin-bottom: 55px;margin-left: 29px;border-style: none;color: rgb(255, 255, 255);">ANALYZE</a>
             </div>
         </div>
     </header>
-    <footer>
-        <footer style="background: #292F33;height: 43.2px;">
-            <div class="container">
-                <p class="text-center text-white m-0 small" style="padding-top: 12px;">Copyright&nbsp;© TweeTox2021</p>
+    <section style="background: #cee9ff;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5"><img class="rounded-circle img-fluid" src="assets/img/twitox%20bg%20logo-03-03.png"></div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4" style="font-size: 44px;">About&nbsp;TweeTox</h2>
+                        <p><br><strong>TweeTox&nbsp;</strong>is a program that analyses twitter user behavior through their actions on their Twitter Profile. The program utilize machine learning to give Twitter users appropriate score according to their tweets or retweets. This program is meant for educational purposes and no ill intentions exists prior to creating this program.<br><br></p>
+                    </div>
+                </div>
             </div>
-        </footer>
+        </div>
+    </section>
+    <section style="background: #cee9ff;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5"><img class="rounded-circle img-fluid" src="assets/img/code3.png"></div>
+                </div>
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5">
+                        <h2 class="display-4" style="font-size: 40px;">Sentiment Analysis</h2>
+                        <p>Using Sentiment Analysis, an NLP technique, Tweetox could analyze whether the user has a high behavior score or not, from the user's tweets. Results use several different tests to find the most confident score. This does not mean that the user is bad or not, but an analysis of their behavior on twitter.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section style="background: #cee9ff;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5"><img class="rounded-circle img-fluid" src="assets/img/code%202.png"></div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4" style="font-size: 47px;">Web Scraping</h2>
+                        <p style="color: rgb(33, 37, 41);"><br>The program also utilize&nbsp;Twitter API&nbsp;to scrap data from Twitter&nbsp;officially. In case of API failure or Authorization failures,&nbsp;Requests&nbsp;module will be used to manually scrap the data from Twitter, of course at a price of reduced request amount and increased time interval as to not be intrusive to Twitter. The scrapped data is then sent to the program which keeps the machine learning model, and asks the program politely to assess the given user with its already made model through extensive training.<br><br></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer style="background: #292F33;height: 43.2px;">
+        <div class="container">
+            <p class="text-center text-white m-0 small" style="padding-top: 12px;">Copyright&nbsp;© TweeTox 2021</p>
+        </div>
     </footer>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
