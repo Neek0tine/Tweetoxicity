@@ -53,7 +53,7 @@ def get_user_stats(query=None):
 
 def get_user_tweets(user=None):
     _user, api = get_user_stats(user)
-    _count = 50
+    _count = 150
 
     try:
         tweets = tweepy.Cursor(api.user_timeline, user_id=_user.id).items(_count)
