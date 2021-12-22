@@ -104,7 +104,7 @@ def ratio(df):
     }
 
     Result = pd.DataFrame(sent_ratio)
-    
+
     return Result
 
 
