@@ -53,12 +53,12 @@ def get_user_stats(query=None):
 
 def get_user_tweets(user=None):
     _user, api = get_user_stats(user)
-    _count = 150
+    _count = 50
 
     try:
         tweets = tweepy.Cursor(api.user_timeline, user_id=_user.id).items(_count)
         tweets_list = [[tweet.created_at, tweet.text] for tweet in tweets]
-        tweets_df = pd.DataFrame(tweets_list)
+        tweets_df = pd.DataFrame(tweets_list, columns=['TimeStamp', 'Text'])
         return tweets_df
         # tweets_df.to_csv(f'Tweets of {_user.screen_name}.csv', index=False)
 

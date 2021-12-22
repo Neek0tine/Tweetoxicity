@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="jumbotron" style="background: rgba(48,61,71,0.78);border-style: solid;">
+        <h1 style="color: #ffffff;font-size: 60px;">*Account* Analysis</h1>
+        <p style="color: #ffffff;font-size: 23px;">Yep ! I think *account* needs a day off...</p>
+        <div class="d-flex justify-content-center">
+        <form method="POST" action="#">
+            <p><a href="{{ url_for('testdetails_page') }}" class="btn btn-primary" name="submit_button" role="button" style="background: var(--blue);border-style: none;font-size: 20px;font-family: Lato, sans-serif;margin-top: 12px;">Detailed Result</a></p>
+        </form>
+        </div>
+    </div>
+{% endblock %}
