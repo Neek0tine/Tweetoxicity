@@ -9,16 +9,15 @@
                 <th scope="col">Confidence</th>
             </tr>
         </thead>
-        <tbody>
-            <!-- Your rows inside the table HERE: -->
-            {% for data in items %}
-                <tr>
-                    <td>{{ data[0] }}</td>
-                    <td>{{ data[1] }}</td>
-                    <td>{{ data[2] }}</td>
-                </tr>
-            {% endfor %}
-                
-        </tbody>
+    <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for data in items %}
+        <tr>
+            <td>{{ data[0] }}</td>
+            <td>{{ data[1] }}</td>
+            <td>{{ data[2] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
     </table>
 {% endblock %}
