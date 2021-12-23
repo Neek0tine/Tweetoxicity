@@ -5,6 +5,8 @@ from time import sleep
 
 
 def _init():
+    api = ''
+    
     try:
         print('Authenticating ...')
         consumer_key = getenv('tweepy_consumer_key')
