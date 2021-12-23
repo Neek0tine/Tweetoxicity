@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head >
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Tweetoxicity</title>
@@ -9,7 +9,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='bootstrap/img/twitox-favicon.ico') }}">
+
+    <script type="text/javascript">// <![CDATA[
+        function loading(){
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("content").style.display = "none";
+        }
+// ]]></script>
 </head>
+
 <body style="background: #585858;">
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top navbar-custom" style="background: #292F33;">
         <div class="container"><a class="navbar-brand" href="{{ url_for('home_page') }}">TweeTox</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
