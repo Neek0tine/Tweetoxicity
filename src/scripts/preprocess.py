@@ -10,6 +10,7 @@ from nltk.tokenize import word_tokenize
 import re
 
 nltk.download('omw-1.4')
+nltk.download('stopwords')
 
 
 def cleaning(text):
