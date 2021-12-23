@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <header class="text-center text-white masthead" style="background: url(static/img/twitter-logo-graphic.png) center / cover, #4ab1ff;">
+    <header class="text-center text-white masthead" style="background: url(static/bootstrap/img/twitter-logo-graphic.png) center / cover, #585858;">
         <div class="masthead-content">
         <div class="container">
             <form method="POST">
@@ -25,7 +25,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 order-lg-2">
-                        <div class="p-5"><img class="rounded-circle img-fluid" src="{{ url_for('static', filename='img/twittoxbg.png') }}"></div>
+                        <div class="p-5"><img class="rounded-circle img-fluid" src="{{ url_for('static', filename='bootstrap/img/twittoxbg.png') }}"></div>
                     </div>
                     <div class="col-lg-6 order-lg-1">
                         <div class="p-5">
@@ -40,7 +40,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 order-lg-1">
-                        <div class="p-5"><img class="rounded-circle img-fluid" src="{{ url_for('static', filename='img/code3.png') }}"></div>
+                        <div class="p-5"><img class="rounded-circle img-fluid" src="{{ url_for('static', filename='bootstrap/img/code3.png') }}"></div>
                     </div>
                     <div class="col-lg-6 order-lg-2">
                         <div class="p-5">
@@ -55,7 +55,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 order-lg-2">
-                        <div class="p-5"><img class="rounded-circle img-fluid" src="{{ url_for('static', filename='img/code2.png') }}"></div>
+                        <div class="p-5"><img class="rounded-circle img-fluid" src="{{ url_for('static', filename='bootstrap/img/code2.png') }}"></div>
                     </div>
                     <div class="col-lg-6 order-lg-1">
                         <div class="p-5">
@@ -68,4 +68,13 @@
         </section>
     </main>
     
+{% endblock %}
+
+{% block footer %}
+<footer style="background: #292F33;height: 43.2px;">
+    <div class="container">
+        <p class="text-center text-white m-0 small" style="padding-top: 12px;">Copyright&nbsp;© TweeTox 2021</p>
+    </div>
+</footer>
+
 {% endblock %}

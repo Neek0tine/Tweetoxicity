@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Home - TwitterToxicity</title>
+    <title>Tweetoxicity</title>
     <meta name="description" content="Could someone's account causes a social aggression ? We'll predict it for you !">
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
 </head>
-<body style="background: var(--blue);">
+<body style="background: #585858;">
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top navbar-custom" style="background: #292F33;">
         <div class="container"><a class="navbar-brand" href="{{ url_for('home_page') }}">TweeTox</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -31,11 +31,10 @@
     {% block body %}
 
     {% endblock %}
-    <footer style="background: #292F33;height: 43.2px;">
-        <div class="container">
-            <p class="text-center text-white m-0 small" style="padding-top: 12px;">Copyright&nbsp;© TweeTox 2021</p>
-        </div>
-    </footer>
+
+    {% block footer %}
+
+    {% endblock %}
 
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
