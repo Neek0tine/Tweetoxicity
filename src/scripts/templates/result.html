@@ -1,12 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="jumbotron" style="background: rgba(48,61,71,0.78);border-style: solid;">
-        <h1 style="color: #ffffff;font-size: 60px;">*Account* Analysis</h1>
-        <p style="color: #ffffff;font-size: 23px;">Yep ! I think *account* needs a day off...</p>
-        <div class="d-flex justify-content-center">
-        <form method="POST" action="#">
-            <p><a href="{{ url_for('testdetails_page') }}" class="btn btn-primary" name="submit_button" role="button" style="background: var(--blue);border-style: none;font-size: 20px;font-family: Lato, sans-serif;margin-top: 12px;">Detailed Result</a></p>
-        </form>
+    <header class="text-center text-white masthead" style="background: url(static/bootstrap/img/twitter-logo-graphic.png) center / cover, #585858;">
+        <div class="masthead-content">
+        <div class="container">
+            <div class="jumbotron" style="background: rgba(48,61,71,0.78);border-style: solid;">
+                <h1 style="color: #ffffff;font-size: 60px;">{{ username }} Account Analysis</h1>
+                <p style="color: #ffffff;font-size: 23px;">Sentiment: {{ account_sentiment }}</p>
+                <!-- <p style="color: #ffffff;font-size: 23px;">Yep ! I think {{ username }} needs a day off...</p> -->
+                <div class="d-flex justify-content-center">
+                    <form method="POST" action="#">
+                    <p><a href="{{ url_for('resultdetails_page') }}" class="btn btn-primary" name="submit_button" role="button" style="background: var(--blue);border-style: none;font-size: 20px;font-family: Lato, sans-serif;margin-top: 12px;">Detailed Result</a></p>
+                    </form>
+                </div>
+            </div>
         </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block footer %}
+<footer class="card-footer" style="background: #292F33;height: 43.2px;">
+    <div class="container">
+        <p class="text-center text-white m-0 small" style="padding-top: 12px;">Copyright&nbsp;© TweeTox 2021</p>
     </div>
+</footer>
+
 {% endblock %}

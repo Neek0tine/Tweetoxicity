@@ -93,22 +93,20 @@ def predict(model, vectorizer, texts):
     print('===DEBUG LOAD MODEL END===')
     return df
 
-
-def ratio(df):
-    POSITIVE = df['sentiment'].value_counts()["POSITIVE"] / len(df['sentiment']) * 100
-    NEGATIVE = df['sentiment'].value_counts()["NEGATIVE"] / len(df['sentiment']) * 100
-
-    sent_ratio = {
-        'Sentiment': ["POSITIVE", "NEGATIVE"],
-        'Ratio': [POSITIVE, NEGATIVE]
-    }
-
-    Result = pd.DataFrame(sent_ratio)
+def account_sentiment(df):
+    print('===DEBUG ACCOUNT SENTIMENT START===')
     
-    return Result
+    df_count_sentiment = df['sentiment'].value_counts().to_frame()
+    df_count_sentiment['percentage'] = round(df_count_sentiment['sentiment'] / df_count_sentiment['sentiment'].sum() * 100,2)
+    df_count_sentiment = df_count_sentiment.reset_index().rename({'index':'final_sentiment'}, axis=1)
+    
+    sentiment_max = df_count_sentiment['final_sentiment'].max()
+    print('===DEBUG ACCOUNT SENTIMENT END===')
+    return sentiment_max
+    
 
 
-def tweetoxicity(datas):
+def models_script(datas):
     # read user inputs
     data = datas['Text']
     # Inisiasi Pickle File
@@ -117,6 +115,10 @@ def tweetoxicity(datas):
     # inisiasi predict
     models = predict(model, vetorizer, data)
     
+    sentiment = account_sentiment(models)
     
-    return models
+    
+    return models, sentiment
+
+
 
