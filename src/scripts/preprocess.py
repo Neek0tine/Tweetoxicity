@@ -3,15 +3,12 @@ import numpy as np
 import pandas as pd
 import os
 
-import nltk
+import nltk; nltk.download('popular')
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 import re
 
-nltk.download('omw-1.4')
-nltk.download('punkt')
-nltk.download('stopwords')
 
 
 def cleaning(text):
