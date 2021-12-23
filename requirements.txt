@@ -2,7 +2,7 @@ certifi==2021.10.8
 charset-normalizer==2.0.9
 click==8.0.3
 colorama==0.4.4
-dataclasses==0.8
+dataclasses<=0.8
 Flask==2.0.2
 idna==3.3
 importlib-metadata==4.8.2
