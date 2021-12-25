@@ -119,6 +119,3 @@ def models_script(datas):
     
     
     return models, sentiment
-
-
-
