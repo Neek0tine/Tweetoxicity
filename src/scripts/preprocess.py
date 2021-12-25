@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import os
 
-import nltk; nltk.download('popular')
+# import nltk; nltk.download('popular')
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
@@ -50,7 +50,7 @@ def flat(text):
 def load_model():
     print('===DEBUG LOAD MODEL===')
     # Import Model
-
+    print(os.listdir())
     with open('pickle/CombineModel.pkl', 'rb') as file:
         model = pickle.load(file)
 
@@ -126,3 +126,4 @@ def models_script(datas):
     sentiment = account_sentiment(models)
 
     return models, sentiment
+
