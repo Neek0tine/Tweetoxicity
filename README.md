@@ -1,4 +1,7 @@
 
+
+
+
 <img src="https://github.com/Neek0tine/Tweetoxicity/blob/main/assets/toxicitytweet.png" alt="TweeToxicity" width="800"/><br>
 ## What is it?
 **TweeToxicity** is a program that analyses twitter user behavior through their actions on their Twitter Profile. The program utilize machine learning to give Twitter users appropriate score according to their tweets or retweets. This program is meant for educational purposes and no ill intetions exists prior to creating this program.

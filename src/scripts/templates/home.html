@@ -5,16 +5,21 @@
 {% endblock %}
 
 {% block content %}
-    <header class="text-center text-white masthead" style="background: url(static/bootstrap/img/twitter-logo-graphic.png) center / cover, #585858;">
+    <header class="text-center text-white masthead" style="background: url('static/bootstrap/img/twitter-logo-graphic.png') center / cover, #585858; padding-bottom: 300px">
         <div class="masthead-content">
-        <div class="container">
-            <form method="POST">
-                <h1 class="masthead-heading mb-0" style="font-size: 72px;color: #fffff0;">IS AN ACCOUNT GIVING YOU A BAD INFLUENCE ?</h1>
-                <h2 class="masthead-subheading mb-0" style="font-size: 30px;color: #fffff0;">We'll check it for you !</h2>
-                <input type="text" name="username" placeholder="Twitter Username" style="width: 370.2px;height: 39px;border-style: none;">
-                <button type="submit" class="btn btn-primary btn-xl rounded-pill mt-5" style="background: var(--blue);padding: 13px 20px;margin-bottom: 55px;margin-left: 29px;border-style: none;color: rgb(255, 255, 255);" >ANALYZE</button>
-            </form>
+        <div id="loading" style="display: none">
+            <img src="/static/bootstrap/img/analyzing.gif" alt="Loadinglmao" width="25%" margin-left="auto" margin-right="auto">
         </div>
+        <div id="content" style="display: block">
+            <div class="container">
+                <form method="POST">
+                    <h1 class="masthead-heading mb-0" style="font-size: 72px;color: #ffffff ;">IS AN ACCOUNT GIVING YOU A BAD INFLUENCE ?</h1>
+                    <h2 class="masthead-subheading mb-0" style="font-size: 30px;color: #ffffff; margin-left: auto; margin-right: auto">We'll check it for you !</h2>
+                    <input type="text" name="username" placeholder="@Username, #Tags, or Texts" style="width: 370.2px;height: 39px;border-style: double;">
+                    <button type="submit" id="submit_username" class="btn btn-primary btn-xl rounded-pill mt-5" onclick="loading();" style="background: var(--blue);padding: 13px 20px;margin-bottom: 55px;margin-left: 29px;border-style: none;color: rgb(255, 255, 255);" >ANALYZE</button>
+                </form>
+            </div>
+          </div>
         </div>
     </header>
 {% endblock %}
