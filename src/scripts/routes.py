@@ -25,6 +25,7 @@ def result_page(user):
 
     if str(user).startswith('@'):
         _tweetscrap = (tweetox(user).get_user_tweets())[0]
+        print(_tweetscrap)
         if _tweetscrap is None:
             print('[!] Could not find user timeline')
             _tweetscrap = None
@@ -39,21 +40,25 @@ def result_page(user):
         else:
             pass
 
-    _tweetmodels, _accountsentiment = models_script(_tweetscrap)
-    tweets.append(_tweetmodels)
-
-    _color = ''
-    if _accountsentiment == 'POSITIVE':
-        _color = 'rgba(22, 160, 133, 0.78)'
+    if _tweetscrap.empty:
+        print('[!] User/Tag doesnt have tweets')
+        return render_template('tweets_null.html', username=user)
     else:
-        _color = 'rgba(255, 99, 71, 0.78)'
+        _tweetmodels, _accountsentiment = models_script(_tweetscrap)
+        tweets.append(_tweetmodels)
 
-    return render_template('result.html', username=user, account_sentiment=_accountsentiment, color=_color)
+        _color = ''
+        if _accountsentiment == 'POSITIVE':
+            _color = 'rgba(22, 160, 133, 0.78)'
+        else:
+            _color = 'rgba(255, 99, 71, 0.78)'
+
+        return render_template('result.html', username=user, account_sentiment=_accountsentiment, color=_color)
 
 
 @app.route("/home/result/details")
 def resultdetails_page():
-    Items = []
+    # Items = []
     for tweet in tweets:
         Items = [(a, b, c) for a, b, c in zip(tweet['original text'], tweet['sentiment'], tweet['confidence'])]
 
