@@ -3,6 +3,7 @@ from scripts.preprocess import models_script
 from flask.helpers import url_for
 from scripts.tweepy_api import tweetox
 from scripts import app
+from .errors import defaultHandler
 
 
 @app.route("/", methods=["POST", "GET"])
@@ -15,6 +16,11 @@ def home_page():
         return render_template('home.html')
 
 
+@app.route("/about")
+def about_page():
+    return render_template('about.html')
+
+
 tweets = []
 
 
@@ -24,7 +30,12 @@ def result_page(user):
     _tweetscrap = ''
 
     if str(user).startswith('@'):
-        _tweetscrap = (tweetox(user).get_user_tweets())[0]
+
+        try:
+            _tweetscrap = (tweetox(user).get_user_tweets())[0]
+        except Exception as e:
+            raise defaultHandler
+
         print(_tweetscrap)
         if _tweetscrap is None:
             print('[!] Could not find user timeline')
@@ -58,7 +69,7 @@ def result_page(user):
 
 @app.route("/home/result/details")
 def resultdetails_page():
-    # Items = []
+    Items = []
     for tweet in tweets:
         Items = [(a, b, c) for a, b, c in zip(tweet['original text'], tweet['sentiment'], tweet['confidence'])]
 
