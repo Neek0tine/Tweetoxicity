@@ -1,8 +1,20 @@
 {% extends 'base.html' %}
 
+{% block script %}
+<script type="text/javascript">// <![CDATA[
+    function loading(){
+        document.getElementById("loading").style.display = "block";
+        document.getElementById("content").style.display = "none";
+    }
+    
+// ]]></script>
+{% endblock %}
+
+
 {% block about %}
     <li class="nav-item"><a class="nav-link" href="about.html">ABOUT</a></li>
 {% endblock %}
+
 
 {% block content %}
     <header class="text-center text-white masthead" style="background: url('static/bootstrap/img/twitter-logo-graphic.png') center / cover, #585858; overflow: hidden; padding-bottom: 320px">
@@ -23,7 +35,7 @@
                     </div>
 
                     <input type="text" id="userInpt" name="username" placeholder="@Username, #Tags, or Texts" onkeyup="check()" style="width: 370.2px;height: 39px;border-style: double;" required>
-                    <button type="submit" id="submit_username" class="btn btn-primary btn-xl rounded-pill mt-5" onclick="loading();"  style="background: var(--blue);padding: 13px 20px;margin-bottom: 55px;margin-left: 29px;border-style: none;color: rgb(255, 255, 255);" disabled="disabled" >ANALYZE</button>
+                    <button type="submit" id="submit_username" class="btn btn-primary mt-5 " onclick="loading();"  style="background: var(--blue);padding: 10px 20px;margin-bottom: 55px;margin-left: 29px;border-style: none;color: rgb(255, 255, 255);" disabled="disabled" >ANALYZE</button>
                 </form>
 
                 <script type="text/javascript">
@@ -43,6 +55,7 @@
         </div>
     </header>
 {% endblock %}
+
 
 {% block body %}
 <!--    <main id="about">-->
@@ -94,6 +107,7 @@
 <!--    </main>-->
 
 {% endblock %}
+
 
 {% block footer %}
 <footer style="background: #292F33;height: 43.2px;">

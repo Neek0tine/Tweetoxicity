@@ -89,5 +89,6 @@ def resultdetails_page():
 def download():
     users = "".join([i for i in user])
     _filenames = fr"tweets\Tweets_of_{users}.csv"
+    user.clear()
     
     return send_file(_filenames, as_attachment=True)
