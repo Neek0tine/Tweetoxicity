@@ -78,6 +78,23 @@ body {
     height: 100%;
 }
 
+/*.title{*/
+/*	background-color: rgb(51 148 193 / 10%);*/
+/*    color: rgb(186, 184, 182);*/
+/*	outline: 5px solid darkblue;*/
+/*	border-radius: 25px;*/
+/*	margin-bottom: 50px;*/
+/*}*/
+
+/*.subtitle{*/
+/*	background-color: rgb(51 120 193 / 10%);*/
+/*    color: rgb(186, 184, 182);*/
+/*	outline: 5px solid darkblue;*/
+/*	border-radius: 15px;*/
+/*	padding-top: 15px;*/
+/*	padding-bottom: 15px;*/
+/*}*/
+
 [tabindex="-1"]:focus:not(:focus-visible) {
 	outline: 0!important
 }

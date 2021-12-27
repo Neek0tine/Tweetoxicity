@@ -3,12 +3,11 @@ import numpy as np
 import pandas as pd
 import os
 
-# import nltk; nltk.download('popular')
+import nltk; nltk.download('popular')
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 import re
-
 
 
 def cleaning(text):
@@ -50,12 +49,12 @@ def flat(text):
 def load_model():
     print('===DEBUG LOAD MODEL===')
     # Import Model
-    print(os.listdir())
-    with open('src/scripts/pickle/CombineModel.pkl', 'rb') as file:
+
+    with open('scripts/pickle/CombineModel.pkl', 'rb') as file:
         model = pickle.load(file)
 
     # Import Vecorizer (text token)
-    with open('src/scripts/pickle/vectorizer.pkl', 'rb') as file:
+    with open('scripts/pickle/vectorizer.pkl', 'rb') as file:
         vectorizer = pickle.load(file)
 
     return model, vectorizer
@@ -126,4 +125,3 @@ def models_script(datas):
     sentiment = account_sentiment(models)
 
     return models, sentiment
-
