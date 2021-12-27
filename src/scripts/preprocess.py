@@ -51,11 +51,11 @@ def load_model():
     print('===DEBUG LOAD MODEL===')
     # Import Model
     print(os.listdir())
-    with open('pickle/CombineModel.pkl', 'rb') as file:
+    with open('src/scripts/pickle/CombineModel.pkl', 'rb') as file:
         model = pickle.load(file)
 
     # Import Vecorizer (text token)
-    with open('pickle/vectorizer.pkl', 'rb') as file:
+    with open('src/scripts/pickle/vectorizer.pkl', 'rb') as file:
         vectorizer = pickle.load(file)
 
     return model, vectorizer
