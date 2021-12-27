@@ -1,8 +1,8 @@
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, send_file
 from scripts.preprocess import models_script
 from scripts.tweepy_api import tweetox
-from .errors import defaultHandler
-from flask.helpers import url_for
+# from .errors import defaultHandler
+from flask.helpers import send_from_directory, url_for
 from scripts import app
 import os
 
@@ -73,28 +73,21 @@ def result_page(user):
         return render_template('result.html', username=user, account_sentiment=_accountsentiment, color=_color)
 
 
-@app.route("/download")
-def download():
-
-    print(os.getcwd())
-    _filename = f'tweets/Tweets_of_{"".join(user[0])}'
-    print(_filename)
-    print(tweets)
-
-    _download = tweets.to_csv(_filename)
-    print('im blue da ba dee')
-
-    return send_file(_download,
-                     mimetype='text/csv',
-                     attachment_filename=_filename,
-                     as_attachment=True)
-
-
-
 @app.route("/home/result/details")
 def resultdetails_page():
     Items = []
     for tweet in tweets:
+        _username = "".join([usr for usr in user])
+        _filename = fr"scripts\tweets\Tweets_of_{_username}.csv"
+        _tocsv = tweet.to_csv(_filename)
         Items = [(a, b, c) for a, b, c in zip(tweet['original text'], tweet['sentiment'], tweet['confidence'])]
 
     return render_template('resultdetails.html', items=Items)
+
+
+@app.route("/download")
+def download():
+    users = "".join([i for i in user])
+    _filenames = fr"tweets\Tweets_of_{users}.csv"
+    
+    return send_file(_filenames, as_attachment=True)
