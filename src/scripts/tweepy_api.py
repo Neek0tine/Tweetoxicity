@@ -67,6 +67,7 @@ class tweetox:
             _tweets = tweepy.Cursor(_api.user_timeline, user_id=_user.id).items(_count)
             _tweets_list = [[_tweet.created_at, _tweet.text] for _tweet in _tweets]
             _tweets_df = pd.DataFrame(_tweets_list, columns=['TimeStamp', 'Text'])
+            # _tweets_df.to_csv(f'/scripts/tweets/Tweets_of_{_query}.csv')
             return _tweets_df, _user
 
         except BaseException as e:
@@ -85,11 +86,13 @@ class tweetox:
 
         _query = self.query
         _api = self.api
+        _count = 100
 
         try:
-            _tweets = _api.search_tweets(_query)
+            _tweets = _api.search_tweets(_query, count=_count)
             _tweets = [[_tweet.created_at, _tweet.text] for _tweet in _tweets]
             _tweets_df = pd.DataFrame(_tweets, columns=['TimeStamp', 'Text'])
+            # _tweets_df.to_csv(f'/scripts/tweets/Tweets_of_{_query}.csv')
             return _tweets_df
         except Exception as e:
             print(f'[!] Could not get any result ({e})')
@@ -107,4 +110,5 @@ if __name__== "__main__":
     print('  Pandas version', pd.__version__)
     print("  https://github.com/Neek0tine/Tweetoxicity")
     print("└" + "─" * 64 + "┘")
-
+    r = tweetox(input('input '))
+    r.get_user_tweets()
