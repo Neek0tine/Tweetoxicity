@@ -1,9 +1,13 @@
 from flask import render_template, request, redirect
 from scripts.preprocess import models_script
-from flask.helpers import url_for
 from scripts.tweepy_api import tweetox
-from scripts import app
 from .errors import defaultHandler
+from flask.helpers import url_for
+from scripts import app
+import os
+
+
+user = []
 
 
 @app.route("/", methods=["POST", "GET"])
@@ -11,6 +15,7 @@ from .errors import defaultHandler
 def home_page():
     if request.method == "POST":
         username = request.form.get("username")
+        user.append(str(username))
         return redirect(url_for("result_page", user=username))
     else:
         return render_template('home.html')
@@ -31,12 +36,13 @@ def result_page(user):
 
     if str(user).startswith('@'):
 
-        try:
-            _tweetscrap = (tweetox(user).get_user_tweets())[0]
-        except Exception as e:
-            raise defaultHandler
+        _tweetscrap = (tweetox(user).get_user_tweets())[0]
 
-        print(_tweetscrap)
+        # try:
+        #     _tweetscrap = (tweetox(user).get_user_tweets())[0]
+        # except Exception:
+        #     raise defaultHandler
+
         if _tweetscrap is None:
             print('[!] Could not find user timeline')
             _tweetscrap = None
@@ -65,6 +71,24 @@ def result_page(user):
             _color = 'rgba(255, 99, 71, 0.78)'
 
         return render_template('result.html', username=user, account_sentiment=_accountsentiment, color=_color)
+
+
+@app.route("/download")
+def download():
+
+    print(os.getcwd())
+    _filename = f'tweets/Tweets_of_{"".join(user[0])}'
+    print(_filename)
+    print(tweets)
+
+    _download = tweets.to_csv(_filename)
+    print('im blue da ba dee')
+
+    return send_file(_download,
+                     mimetype='text/csv',
+                     attachment_filename=_filename,
+                     as_attachment=True)
+
 
 
 @app.route("/home/result/details")
