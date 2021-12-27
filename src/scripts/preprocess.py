@@ -3,11 +3,12 @@ import numpy as np
 import pandas as pd
 import os
 
-import nltk; nltk.download('popular')
+# import nltk; nltk.download('popular')
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 import re
+
 
 
 def cleaning(text):

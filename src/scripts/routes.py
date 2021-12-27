@@ -3,7 +3,7 @@ from scripts.preprocess import models_script
 from flask.helpers import url_for
 from scripts.tweepy_api import tweetox
 from scripts import app
-from .errors import defaultHandler
+from scripts.errors import defaultHandler
 
 
 @app.route("/", methods=["POST", "GET"])

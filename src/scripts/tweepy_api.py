@@ -107,3 +107,4 @@ if __name__== "__main__":
     print('  Pandas version', pd.__version__)
     print("  https://github.com/Neek0tine/Tweetoxicity")
     print("└" + "─" * 64 + "┘")
+
