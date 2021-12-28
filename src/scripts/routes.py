@@ -19,6 +19,7 @@ def home_page():
         return redirect(url_for("result_page", user=username))
     else:
         return render_template('home.html')
+    user.clear()
 
 
 @app.route("/about")
@@ -27,6 +28,7 @@ def about_page():
 
 
 tweets = []
+tweets_sentiment = []
 
 
 @app.route("/home/result/<user>")
@@ -61,8 +63,9 @@ def result_page(user):
         print('[!] User/Tag doesnt have tweets')
         return render_template('tweets_null.html', username=user)
     else:
-        _tweetmodels, _accountsentiment = models_script(_tweetscrap)
+        _tweetmodels, _accountsentiment, _sentimentcount = models_script(_tweetscrap)
         tweets.append(_tweetmodels)
+        tweets_sentiment.append(_sentimentcount)
 
         _color = ''
         if _accountsentiment == 'POSITIVE':
@@ -82,7 +85,16 @@ def resultdetails_page():
         _tocsv = tweet.to_csv(_filename)
         Items = [(a, b, c) for a, b, c in zip(tweet['original text'], tweet['sentiment'], tweet['confidence'])]
 
-    return render_template('resultdetails.html', items=Items)
+    data = []
+    for twt in tweets_sentiment:
+        print(twt)
+        POSITIVE = int(twt.query("final_sentiment == 'POSITIVE'")["sentiment"])
+        NEGATIVE = int(twt.query("final_sentiment == 'NEGATIVE'")["sentiment"])
+        print(POSITIVE)
+        data = {'Sentiment' : 'Count', 'Positive' : POSITIVE, 'Negative' : NEGATIVE}
+        
+
+    return render_template('resultdetails.html', items=Items, dashboardPie=data)
 
 
 @app.route("/download")

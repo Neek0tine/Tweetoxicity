@@ -112,18 +112,25 @@ def account_sentiment(df):
 
     sentiment_max = df_count_sentiment['final_sentiment'].max()
     print('===DEBUG ACCOUNT SENTIMENT END===')
-    return sentiment_max
+    return sentiment_max, df_count_sentiment
 
 
 def models_script(datas):
+    
     # read user inputs
     data = datas['Text']
+    
     # Inisiasi Pickle File
     model, vetorizer = load_model()
 
     # inisiasi predict
     models = predict(model, vetorizer, data)
 
-    sentiment = account_sentiment(models)
+    sentiment_final, sentiment_count = account_sentiment(models)
 
-    return models, sentiment
+    return models, sentiment_final, sentiment_count
+
+
+
+
+
