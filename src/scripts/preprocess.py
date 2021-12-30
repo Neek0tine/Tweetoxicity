@@ -9,7 +9,7 @@ import re
 import os
 
 
-# nltk.download('popular')
+nltk.download('popular')
 
 
 def cleaning(text):
