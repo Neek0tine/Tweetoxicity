@@ -1,6 +1,5 @@
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
 import pandas as pd
 import numpy as np
 import pickle
@@ -8,8 +7,12 @@ import nltk
 import re
 import os
 
-
 nltk.download('popular')
+
+from nltk.corpus import stopwords
+
+
+
 
 
 def cleaning(text):
