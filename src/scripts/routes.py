@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, send_file
+from flask import render_template, request, redirect, Response
 from scripts.preprocess import models_script
 from scripts.tweepy_api import tweetox
 # from .errors import defaultHandler
@@ -78,12 +78,9 @@ def result_page(user):
 
 @app.route("/home/result/details")
 def resultdetails_page():
-
+    
     Items = []
     for tweet in tweets:
-        _username = "".join([usr for usr in user])
-        _filename = fr"scripts\tweets\Tweets_of_{_username}.csv"
-        _tocsv = tweet.to_csv(_filename)
         Items = [(a, b, c) for a, b, c in zip(tweet['original text'], tweet['sentiment'], tweet['confidence'])]
 
     data = []
@@ -100,10 +97,10 @@ def resultdetails_page():
 
 @app.route("/download")
 def download():
-
-    for tweet,usr in zip(tweets,user):
+    
+    for tweet in tweets:
         response = Response(tweet.to_csv(), mimetype='text/csv')
-        response.headers['Content-Disposition'] = 'attachment; filename=Tweets_of_{fname}.csv'.format(fname=usr)
+        response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
         user.clear()
         return response
-
+        
