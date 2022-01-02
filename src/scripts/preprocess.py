@@ -4,6 +4,7 @@ import pickle
 import nltk
 import re
 import os
+import emoji
 
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
@@ -66,7 +67,8 @@ def predict(model, vectorizer, texts):
 
     for text in texts:
         # Text Cleaning (scripts ada di packages/text/__init__.py)
-        clean = cleaning(text)
+        txt = emoji.demojize(text, delimiters=("", " "))
+        clean = cleaning(txt)
         # vectorization
         vec_inputs = vectorizer.transform([clean])
 
@@ -96,6 +98,8 @@ def predict(model, vectorizer, texts):
         data.append((text, clean, result_pred, confidence))
 
     df = pd.DataFrame(data, columns=['original text', 'clean text', 'sentiment', 'confidence'])
+    df = df.dropna()
+    
     print('===DEBUG LOAD MODEL END===')
     return df
 
