@@ -100,12 +100,8 @@ def resultdetails_page():
 @app.route("/download")
 def download():
     users = "".join([i for i in user])
-    _filenames = fr"tweets\Tweets_of_{users}.csv"
+    _filenames = fr"tweets/Tweets_of_{users}.csv"
     user.clear()
-    files = glob.glob('/src/scripts/tweets/.*')
-    print(files)
-    for file in files:
-        os.remove(file)
         
     
     return send_file(_filenames, as_attachment=True)
