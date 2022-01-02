@@ -78,29 +78,23 @@ def result_page(user):
 
 @app.route("/home/result/details")
 def resultdetails_page():
-    
     Items = []
     for tweet in tweets:
         Items = [(a, b, c) for a, b, c in zip(tweet['original text'], tweet['sentiment'], tweet['confidence'])]
 
     data = []
     for twt in tweets_sentiment:
-        print(twt)
         POSITIVE = int(twt.query("final_sentiment == 'POSITIVE'")["sentiment"])
         NEGATIVE = int(twt.query("final_sentiment == 'NEGATIVE'")["sentiment"])
-        print(POSITIVE)
-        data = {'Sentiment' : 'Count', 'Positive' : POSITIVE, 'Negative' : NEGATIVE}
-        
+        data = {'Sentiment': 'Count', 'Positive': POSITIVE, 'Negative': NEGATIVE}
 
     return render_template('resultdetails.html', items=Items, dashboardPie=data)
 
 
 @app.route("/download")
 def download():
-    
     for tweet in tweets:
         response = Response(tweet.to_csv(), mimetype='text/csv')
         response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
         user.clear()
         return response
-        

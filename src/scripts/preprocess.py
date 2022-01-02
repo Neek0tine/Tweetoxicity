@@ -104,11 +104,14 @@ def account_sentiment(df):
     print('===DEBUG ACCOUNT SENTIMENT START===')
 
     df_count_sentiment = df['sentiment'].value_counts().to_frame()
+
     df_count_sentiment['percentage'] = round(
         df_count_sentiment['sentiment'] / df_count_sentiment['sentiment'].sum() * 100, 2)
+
     df_count_sentiment = df_count_sentiment.reset_index().rename({'index': 'final_sentiment'}, axis=1)
 
-    sentiment_max = df_count_sentiment['final_sentiment'].max()
+    sentiment_max = df_count_sentiment.loc[df_count_sentiment['sentiment'] == (df_count_sentiment['sentiment'].max()), 'final_sentiment'].iloc[0]
+
     print('===DEBUG ACCOUNT SENTIMENT END===')
     return sentiment_max, df_count_sentiment
 
@@ -123,12 +126,8 @@ def models_script(datas):
 
     # inisiasi predict
     models = predict(model, vetorizer, data)
+    print(models)
 
     sentiment_final, sentiment_count = account_sentiment(models)
 
     return models, sentiment_final, sentiment_count
-
-
-
-
-
