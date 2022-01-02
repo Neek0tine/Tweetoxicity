@@ -98,9 +98,9 @@ def resultdetails_page():
 @app.route("/download")
 def download():
     
-    for tweet,usr in zip(tweets,user):
+    for tweet in tweets:
         response = Response(tweet.to_csv(), mimetype='text/csv')
-        response.headers['Content-Disposition'] = 'attachment; filename=Tweets_of_{fname}.csv'.format(fname=usr)
+        response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
         user.clear()
         return response
         
