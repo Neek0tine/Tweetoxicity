@@ -5,6 +5,7 @@ from scripts.tweepy_api import tweetox
 from flask.helpers import send_from_directory, url_for
 from scripts import app
 import os
+import glob
 
 
 user = []
@@ -19,7 +20,6 @@ def home_page():
         return redirect(url_for("result_page", user=username))
     else:
         return render_template('home.html')
-    user.clear()
 
 
 @app.route("/about")
@@ -102,5 +102,10 @@ def download():
     users = "".join([i for i in user])
     _filenames = fr"tweets\Tweets_of_{users}.csv"
     user.clear()
+    files = glob.glob('/src/scripts/tweets/.*')
+    print(files)
+    for file in files:
+        os.remove(file)
+        
     
     return send_file(_filenames, as_attachment=True)

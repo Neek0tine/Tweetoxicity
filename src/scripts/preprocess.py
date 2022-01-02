@@ -12,9 +12,6 @@ nltk.download('popular')
 from nltk.corpus import stopwords
 
 
-
-
-
 def cleaning(text):
     stop_words = stopwords.words('english')
     lemma = WordNetLemmatizer()
