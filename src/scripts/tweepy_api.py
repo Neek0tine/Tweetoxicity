@@ -19,7 +19,7 @@ class tweetox:
             print("[+] API Access token [OK]")
             access_token_secret = getenv('tweepy_access_secret')
             print("[+] API Secret [OK]")
-            print("[+]  -- Authenticated --")
+            print("[+]  -- Authenticated --\n")
 
             try:
                 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -99,7 +99,9 @@ class tweetox:
         _count = 100
 
         try:
+            print(f'[+] Searching for {_query}')
             _tweets = _api.search_tweets(_query, count=_count)
+            print(f'[+] found {len(_tweets)} tweets which includes the word: {_query}')
             _tweets = [[_tweet.created_at, _tweet.text] for _tweet in _tweets]
             _tweets_df = pd.DataFrame(_tweets, columns=['TimeStamp', 'Text'])
             # _tweets_df.to_csv(f'/scripts/tweets/Tweets_of_{_query}.csv')

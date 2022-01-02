@@ -65,7 +65,8 @@ def predict(model, vectorizer, texts):
     print('===DEBUG PREDICT===')
     data = []
 
-    for text in texts:
+    for index, text in enumerate(texts):
+        print(f'\r [+] Predicting tweets {index + 1} of {len(texts)}', end='')
         # Text Cleaning (scripts ada di packages/text/__init__.py)
         txt = emoji.demojize(text, delimiters=("", " "))
         clean = cleaning(txt)
@@ -96,7 +97,7 @@ def predict(model, vectorizer, texts):
         confidence = f"{round(result[result['predict'] == result.predict.mode()[0]]['confidence'].mean() * 100, 2)}%"
 
         data.append((text, clean, result_pred, confidence))
-
+    print()
     df = pd.DataFrame(data, columns=['original text', 'clean text', 'sentiment', 'confidence'])
     df = df.dropna()
     
