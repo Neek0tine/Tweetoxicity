@@ -48,9 +48,18 @@ class tweetox:
 
 
         def get_user(query):
+            print(f'\n[+] Searching for user:', query)
+            _search_result = []
+            _user = ''
 
-            _search_result = _api.search_users(query, count=1)
-            _user = _search_result[0]
+            try:
+                _search_result = _api.search_users(query, count=20)
+                _user = _search_result[0]
+                print(f'[+] User found! {_user.screen_name}\n')
+            except:
+                print('[!] Could not find user using batch search. Trying targeted search.')
+                _search_result = _api.get_user(user_id=query)
+                _user = _search_result[0]
 
             print("\n" + "-" * 40, f"\nShowing profile of {_user.screen_name}")
             print("Display name :", _user.name)
@@ -64,6 +73,7 @@ class tweetox:
 
         try:
             _user = get_user(_query)
+            print(f'[+] Collecting tweets and retweets from {_user.screen_name}\n')
             _tweets = tweepy.Cursor(_api.user_timeline, user_id=_user.id).items(_count)
             _tweets_list = [[_tweet.created_at, _tweet.text] for _tweet in _tweets]
             _tweets_df = pd.DataFrame(_tweets_list, columns=['TimeStamp', 'Text'])
@@ -72,7 +82,7 @@ class tweetox:
 
         except BaseException as e:
             print('[!] Could not get specified user timeline,', str(e))
-            return None
+            return e
 
 
 
