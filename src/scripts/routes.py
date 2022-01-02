@@ -88,7 +88,6 @@ def resultdetails_page():
         print(twt)
         POSITIVE = int(twt.query("final_sentiment == 'POSITIVE'")["sentiment"])
         NEGATIVE = int(twt.query("final_sentiment == 'NEGATIVE'")["sentiment"])
-        print(POSITIVE)
         data = {'Sentiment' : 'Count', 'Positive' : POSITIVE, 'Negative' : NEGATIVE}
         
 
@@ -99,7 +98,7 @@ def resultdetails_page():
 def download():
     
     for tweet in tweets:
-        response = Response(tweet.to_csv(), mimetype='text/csv')
+        response = Response(tweet.to_csv(encoding='utf-8'), mimetype='text/csv')
         response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
         user.clear()
         return response
