@@ -1,5 +1,5 @@
 cmudict
-gezetteers
+gazetteers
 genesis
 gutenberg
 inaugural
