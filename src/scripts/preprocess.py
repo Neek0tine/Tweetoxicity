@@ -10,8 +10,6 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
-nltk.download('popular')
-
 
 def cleaning(text):
     stop_words = stopwords.words('english')
