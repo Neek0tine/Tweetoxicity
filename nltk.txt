@@ -15,4 +15,3 @@ twitter_samples
 wordnet_ic
 wordnet31
 words
-word_tokenize
