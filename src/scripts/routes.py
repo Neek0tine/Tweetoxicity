@@ -1,11 +1,14 @@
 from flask import render_template, request, redirect, Response
 from scripts.preprocess import models_script
 from scripts.tweepy_api import tweetox
+from scripts.wordcld import WORDCLOUD
 # from .errors import defaultHandler
 from flask.helpers import send_from_directory, url_for
 from scripts import app
 import os
-import glob
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+from PIL import Image
 
 
 user = []
@@ -80,8 +83,12 @@ def result_page(user):
 def resultdetails_page():
     Items = []
     for tweet in tweets:
+        # dataframe
         Items = [(a, b, c) for a, b, c in zip(tweet['original text'], tweet['sentiment'], tweet['confidence'])]
-
+        
+        # Wordcloud
+        WORDCLOUD(tweet)
+        
     data = []
     for twt in tweets_sentiment:
         POSITIVE = int(twt.query("final_sentiment == 'POSITIVE'")["sentiment"])

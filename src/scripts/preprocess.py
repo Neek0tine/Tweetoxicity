@@ -5,6 +5,7 @@ import nltk
 import re
 import os
 import emoji
+import nltk
 
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
@@ -99,7 +100,8 @@ def predict(model, vectorizer, texts):
         data.append((text, clean, result_pred, confidence))
     print()
     df = pd.DataFrame(data, columns=['original text', 'clean text', 'sentiment', 'confidence'])
-    df = df.dropna()
+    
+    df.dropna(inplace=True)
     
     print('===DEBUG LOAD MODEL END===')
     return df
