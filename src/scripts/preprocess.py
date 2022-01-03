@@ -4,6 +4,7 @@ import pickle
 import re
 import os
 import emoji
+import nltk
 
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize

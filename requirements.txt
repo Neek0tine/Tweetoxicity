@@ -26,3 +26,4 @@ tqdm==4.62.3
 tweepy==4.4.0
 urllib3==1.26.7
 Werkzeug==2.0.2
+wordcloud==1.8.1
