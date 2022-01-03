@@ -95,7 +95,7 @@ def resultdetails_page():
         NEGATIVE = int(twt.query("final_sentiment == 'NEGATIVE'")["sentiment"])
         data = {'Sentiment': 'Count', 'Positive': POSITIVE, 'Negative': NEGATIVE}
 
-    return render_template('resultdetails.html', items=Items, dashboardPie=data)
+    return render_template('result_details.html', items=Items, dashboardPie=data)
 
 
 @app.route("/download")

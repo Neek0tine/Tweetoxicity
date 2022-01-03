@@ -15,8 +15,8 @@ def WORDCLOUD(df):
     
     WC = WordCloud(
         max_words=len(df),
-        width=810,
-        height=500,
+        width=600,
+        height=400,
         background_color="white"
     ).generate(file)
     

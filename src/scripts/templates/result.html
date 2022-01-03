@@ -1,5 +1,31 @@
-{% extends 'base.html' %}
-{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head >
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Tweetoxicity</title>
+    <meta name="description" content="Could someone's account causes a social aggression ? We'll predict it for you !">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='bootstrap/img/twitox-favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top navbar-custom" data-aos="slide-down" data-aos-duration="600" style="background: #292F33;">
+        <div class="container"><a class="navbar-brand" href="{{ url_for('home_page') }}">TweeTox</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home_page') }}" style="color: rgb(255,255,255);">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('about_page') }}" style="color: rgb(255,255,255);">ABOUT</a></li>
+                </ul> 
+            </div>
+        </div>
+    </nav>
     <header class="text-center text-white masthead" style="background:{{color}};">
         <div class="masthead-content">
         <div class="container" style="padding-bottom: 200px">
@@ -16,13 +42,19 @@
         </div>
         </div>
     </header>
-{% endblock %}
+    <footer style="background: #292F33;height: 43.2px;">
+        <div class="container">
+            <p class="text-center text-white m-0 small" style="padding-top: 12px;">Copyright&nbsp;© TweeTox 2021</p>
+        </div>
+    </footer>
+    
 
-{% block footer %}
-<footer class="card-footer" style="background: #292F33;height: 43.2px;">
-    <div class="container">
-        <p class="text-center text-white m-0 small" style="padding-top: 12px;">Copyright&nbsp;© TweeTox 2021</p>
-    </div>
-</footer>
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap/js/jquery.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>AOS.init();</script>
 
-{% endblock %}
+
+</body>
+
+</html>

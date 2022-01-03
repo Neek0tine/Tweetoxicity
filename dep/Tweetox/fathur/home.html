@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block script %}
+<script type="text/javascript">// <![CDATA[
+    function loading(){
+        document.getElementById("loading").style.display = "block";
+        document.getElementById("content").style.display = "none";
+    }
+    
+// ]]></script>
+{% endblock %}
+
+
+{% block about %}
+    <li class="nav-item"><a class="nav-link" href="about.html">ABOUT</a></li>
+{% endblock %}
+
+
+{% block content %}
+    <header class="text-center text-white masthead" style="background: url('static/bootstrap/img/twitter-logo-graphic.png') center / cover, #585858; overflow: hidden; margin-top: auto">
+
+        <div class="masthead-content">
+        <div id="loading" style="display: none; margin-top: auto; margin-bottom: 77px">
+            <img src="/static/bootstrap/img/analyzing.gif" alt="Loadinglmao" width="480px" height="auto">
+        </div>
+        <div id="content" style="display: block; margin-top: 100px; margin-bottom: 100px">
+            <div class="container">
+                <form method="POST">
+                    <div class="title">
+                        <h1 class="masthead-heading mb-0" style="font-size: 72px;color: #ffffff ;">IS AN ACCOUNT GIVING YOU A BAD INFLUENCE ?</h1>
+                    </div>
+
+                    <div class="subtitle">
+                        <h2 class="masthead-subheading mb-0" style="font-size: 30px;color: #ffffff; margin-left: auto; margin-right: auto">We'll check it for you !</h2>
+                    </div>
+
+                    <input type="text" id="userInpt" name="username" placeholder="@Username, #Tags, or Texts" onkeyup="check()" style="width: 370.2px;height: 39px;border-style: double;" required>
+                    <button type="submit" id="submit_username" class="btn btn-primary mt-5 " onclick="loading();"  style="background: var(--blue);padding: 10px 20px;margin-bottom: 55px;margin-left: 29px;border-style: none;color: rgb(255, 255, 255);" disabled="disabled" >ANALYZE</button>
+                </form>
+
+                <script type="text/javascript">
+                    function check() {
+                        if (document.getElementById("userInpt").value==="") {
+                            document.getElementById('submit_username').disabled = true;
+                            document.getElementById('submit_username').style.opacity = '0.2';
+                        } else {
+                            document.getElementById('submit_username').disabled = false;
+                            document.getElementById('submit_username').style.opacity = '1';
+                        }
+                    }
+                </script>
+
+            </div>
+          </div>
+        </div>
+    </header>
+{% endblock %}
+
+
+{% block body %}
+<!--    <main id="about">-->
+<!--        <section style="background: #cee9ff;">-->
+<!--            <div class="container">-->
+<!--                <div class="row align-items-center">-->
+<!--                    <div class="col-lg-6 order-lg-2">-->
+<!--                        <div class="p-5"><img class="rounded-circle img-fluid" src="{{ url_for('static', filename='bootstrap/img/twittoxbg.png') }}"></div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-6 order-lg-1">-->
+<!--                        <div class="p-5">-->
+<!--                            <h2 class="display-4" style="font-size: 44px;">About&nbsp;TweeTox</h2>-->
+<!--                            <p><br><strong>TweeTox&nbsp;</strong>is a program that analyses twitter user behavior through their actions on their Twitter Profile. The program utilize machine learning to give Twitter users appropriate score according to their tweets or retweets. This program is meant for educational purposes and no ill intentions exists prior to creating this program.<br><br></p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+<!--        <section style="background: #cee9ff;">-->
+<!--            <div class="container">-->
+<!--                <div class="row align-items-center">-->
+<!--                    <div class="col-lg-6 order-lg-1">-->
+<!--                        <div class="p-5"><img class="rounded-circle img-fluid" src="{{ url_for('static', filename='bootstrap/img/code3.png') }}"></div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-6 order-lg-2">-->
+<!--                        <div class="p-5">-->
+<!--                            <h2 class="display-4" style="font-size: 40px;">Sentiment Analysis</h2>-->
+<!--                            <p>Using Sentiment Analysis, an NLP technique, Tweetox could analyze whether the user has a high behavior score or not, from the user's tweets. Results use several different tests to find the most confident score. This does not mean that the user is bad or not, but an analysis of their behavior on twitter.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+<!--        <section style="background: #cee9ff;">-->
+<!--            <div class="container">-->
+<!--                <div class="row align-items-center">-->
+<!--                    <div class="col-lg-6 order-lg-2">-->
+<!--                        <div class="p-5"><img class="rounded-circle img-fluid" src="{{ url_for('static', filename='bootstrap/img/code2.png') }}"></div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-6 order-lg-1">-->
+<!--                        <div class="p-5">-->
+<!--                            <h2 class="display-4" style="font-size: 47px;">Web Scraping</h2>-->
+<!--                            <p style="color: rgb(33, 37, 41);"><br>The program also utilize&nbsp;Twitter API&nbsp;to scrap data from Twitter&nbsp;officially. In case of API failure or Authorization failures,&nbsp;Requests&nbsp;module will be used to manually scrap the data from Twitter, of course at a price of reduced request amount and increased time interval as to not be intrusive to Twitter. The scrapped data is then sent to the program which keeps the machine learning model, and asks the program politely to assess the given user with its already made model through extensive training.<br><br></p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+<!--    </main>-->
+
+{% endblock %}
+
+
+{% block footer %}
+<footer style="background: #292F33;height: 43.2px;">
+    <div class="container">
+        <p class="text-center text-white m-0 small" style="padding-top: 12px;">Copyright&nbsp;© TweeTox 2021</p>
+    </div>
+</footer>
+
+{% endblock %}
