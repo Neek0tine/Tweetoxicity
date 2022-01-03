@@ -45,7 +45,7 @@ def result_page(user):
 
         # try:
         #     _tweetscrap = (tweetox(user).get_user_tweets())[0]
-        # except Exception:
+        # except Exception as e:
         #     raise defaultHandler
 
         if _tweetscrap is None:
@@ -81,7 +81,6 @@ def result_page(user):
 
 @app.route("/home/result/details")
 def resultdetails_page():
-    
     Items = []
     for tweet in tweets:
         # dataframe
@@ -92,21 +91,17 @@ def resultdetails_page():
         
     data = []
     for twt in tweets_sentiment:
-        print(twt)
         POSITIVE = int(twt.query("final_sentiment == 'POSITIVE'")["sentiment"])
         NEGATIVE = int(twt.query("final_sentiment == 'NEGATIVE'")["sentiment"])
-        data = {'Sentiment' : 'Count', 'Positive' : POSITIVE, 'Negative' : NEGATIVE}
-        
+        data = {'Sentiment': 'Count', 'Positive': POSITIVE, 'Negative': NEGATIVE}
 
     return render_template('resultdetails.html', items=Items, dashboardPie=data)
 
 
 @app.route("/download")
 def download():
-    
     for tweet in tweets:
-        response = Response(tweet.to_csv(encoding='utf-8'), mimetype='text/csv')
+        response = Response(tweet.to_csv(), mimetype='text/csv')
         response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
         user.clear()
         return response
-        

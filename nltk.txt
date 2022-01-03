@@ -1,0 +1,17 @@
+cmudict
+gazetteers
+genesis
+gutenberg
+inaugural
+movie_reviews
+names
+omw
+omw-1.4
+shakespeare
+stopwords
+wordnet
+treebank
+twitter_samples
+wordnet_ic
+wordnet31
+words

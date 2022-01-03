@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import pickle
-import nltk
 import re
 import os
 import emoji
@@ -67,7 +66,8 @@ def predict(model, vectorizer, texts):
     print('===DEBUG PREDICT===')
     data = []
 
-    for text in texts:
+    for index, text in enumerate(texts):
+        print(f'\r [+] Predicting tweets {index + 1} of {len(texts)}', end='')
         # Text Cleaning (scripts ada di packages/text/__init__.py)
         txt = emoji.demojize(text, delimiters=("", " "))
         clean = cleaning(txt)
@@ -98,7 +98,7 @@ def predict(model, vectorizer, texts):
         confidence = f"{round(result[result['predict'] == result.predict.mode()[0]]['confidence'].mean() * 100, 2)}%"
 
         data.append((text, clean, result_pred, confidence))
-
+    print()
     df = pd.DataFrame(data, columns=['original text', 'clean text', 'sentiment', 'confidence'])
     
     df.dropna(inplace=True)
@@ -111,11 +111,14 @@ def account_sentiment(df):
     print('===DEBUG ACCOUNT SENTIMENT START===')
 
     df_count_sentiment = df['sentiment'].value_counts().to_frame()
+
     df_count_sentiment['percentage'] = round(
         df_count_sentiment['sentiment'] / df_count_sentiment['sentiment'].sum() * 100, 2)
+
     df_count_sentiment = df_count_sentiment.reset_index().rename({'index': 'final_sentiment'}, axis=1)
 
-    sentiment_max = df_count_sentiment['final_sentiment'].max()
+    sentiment_max = df_count_sentiment.loc[df_count_sentiment['sentiment'] == (df_count_sentiment['sentiment'].max()), 'final_sentiment'].iloc[0]
+
     print('===DEBUG ACCOUNT SENTIMENT END===')
     return sentiment_max, df_count_sentiment
 
@@ -130,12 +133,8 @@ def models_script(datas):
 
     # inisiasi predict
     models = predict(model, vetorizer, data)
+    print(models)
 
     sentiment_final, sentiment_count = account_sentiment(models)
 
     return models, sentiment_final, sentiment_count
-
-
-
-
-
