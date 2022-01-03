@@ -10,6 +10,8 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
+nltk.download('popular')
+
 
 def cleaning(text):
     stop_words = stopwords.words('english')
@@ -98,7 +100,8 @@ def predict(model, vectorizer, texts):
         data.append((text, clean, result_pred, confidence))
 
     df = pd.DataFrame(data, columns=['original text', 'clean text', 'sentiment', 'confidence'])
-    df = df.dropna()
+    
+    df.dropna(inplace=True)
     
     print('===DEBUG LOAD MODEL END===')
     return df

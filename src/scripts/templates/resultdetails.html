@@ -33,8 +33,17 @@
 {% block content %}
     <header class="text-white masthead" style="background: url(static/img/twitter-logo-graphic.png) center / cover, #585858;">
         <div class="masthead-content">
+            <div class="jumbotron" style="background: rgba(48,61,71,0.78);border-style: solid;">
+                <div class="row">
+                    <div class="row col-6">
+                        <div id="piechart" style="width: 900px; height: 500px" ></div>
+                    </div>
+                    <div class="row col-6">
+                        <img src="/static/bootstrap/img/wordcloud.png">
+                    </div>
+                </div>
+            </div>
         <div class="container">
-            <div id="piechart" style="width: 900px; height: 500px" ></div>
             <p><a href="{{ url_for('download') }}" class="btn btn-primary" name="submit_button" role="button" style="background: var(--blue);border-style: none;font-size: 20px;font-family: Lato, sans-serif;margin-top: 12px;">Download CSV</a></p>
             <table class="table table-hover table-dark">
                 <thead>
