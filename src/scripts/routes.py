@@ -59,6 +59,7 @@ def result_page():
             pass
 
     else:
+        userent = None
         _tweetscrap = tweetox(_user).get_tweets()
         if _tweetscrap is None:
             print('[!] Could not find any tweets related to tag!')
@@ -87,6 +88,7 @@ def result_page():
 def resultdetails_page():
     Items = []
     if userent is None:
+
         for tweet in tweets:
             # dataframe
             Items = [(a, b, c) for a, b, c in zip(tweet['original text'], tweet['sentiment'], tweet['confidence'])]
