@@ -12,22 +12,39 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='bootstrap/img/twitox-favicon.ico') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
+        <script type="text/javascript">// <![CDATA[
+        function loading(){
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("content").style.display = "none";
+        }
+
+    // ]]></script>
 
 </head>
 
 <body>
+
+
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top navbar-custom" data-aos="slide-down" data-aos-duration="600" style="background: #292F33;">
         <div class="container"><a class="navbar-brand" href="{{ url_for('home_page') }}">TweeTox</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('home_page') }}" style="color: rgb(255,255,255);">HOME</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('about_page') }}" style="color: rgb(255,255,255);">ABOUT</a></li>
-                </ul> 
+                </ul>
             </div>
         </div>
     </nav>
+
+
     <header class="text-center text-white masthead" style="background:{{color}};">
-        <div class="masthead-content">
+
+        <div id="loading" style="display: none; margin-top: auto; margin-bottom: 77px">
+                <img src="/static/bootstrap/img/analyzing.gif" alt="Loadinglmao" width="480px" height="auto">
+                <h3>{{countr}}</h3>
+        </div>
+
+        <div id="content" class="masthead-content">
         <div class="container" style="padding-bottom: 200px">
             <div class="jumbotron" style="background: rgba(48,61,71,0.78);border-style: solid;">
                 <h1 style="color: #ffffff;font-size: 60px;">{{ username }} Analysis</h1>
@@ -35,7 +52,7 @@
                 <!-- <p style="color: #ffffff;font-size: 23px;">Yep ! I think {{ username }} needs a day off...</p> -->
                 <div class="d-flex justify-content-center">
                     <form method="POST" action="#">
-                    <p><a href="{{ url_for('resultdetails_page') }}" class="btn btn-primary" name="submit_button" role="button" style="background: var(--blue);border-style: none;font-size: 20px;font-family: Lato, sans-serif;margin-top: 12px;">Detailed Result</a></p>
+                    <p><a href="{{ url_for('resultdetails_page') }}" class="btn btn-primary" name="submit_button" onclick="loading();" role="button" style="background: var(--blue);border-style: none;font-size: 20px;font-family: Lato, sans-serif;margin-top: 12px;">Detailed Result</a></p>
                     </form>
                 </div>
             </div>
