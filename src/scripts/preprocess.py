@@ -138,3 +138,4 @@ def models_script(datas):
     sentiment_final, sentiment_count = account_sentiment(models)
 
     return models, sentiment_final, sentiment_count
+
