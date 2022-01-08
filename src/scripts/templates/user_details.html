@@ -16,7 +16,7 @@
 
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
-    
+
     function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
@@ -54,7 +54,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('home_page') }}" style="color: rgb(255,255,255);">HOME</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('about_page') }}" style="color: rgb(255,255,255);">ABOUT</a></li>
-                </ul> 
+                </ul>
             </div>
         </div>
     </nav>
@@ -77,6 +77,30 @@
                 <br>
                 <br>
             <p><a href="{{ url_for('download') }}" class="btn btn-primary" name="submit_button" role="button" data-aos="zoom-in" data-aos-duration="600" style="background: var(--blue);border-style: none;font-size: 20px;font-family: Lato, sans-serif;margin-top: 12px;width:100%">Download CSV</a></p>
+
+
+            <div class="footer-clean" style="background-color: rgb(52,58,64); margin-bottom: 15px" data-aos="zoom-in" data-aos-duration="600">
+                <div class="container" >
+                    <div class="row justify-content-center">
+                        <div class="col-sm-4 col-md-3 item" style="margin-right: -2px;background-color: rgb(52,58,64);max-width: 210px;"><img class="tada animated" src="/static/bootstrap/img/pp.jpg" style="width: 144px;margin: 19px;"></div>
+
+                        <div class="col-sm-4 col-md-3 item" style="margin-right: -1px;max-width: 280px;background-color: rgb(52,58,64);">
+                            <h1 style="font-size: 36px;margin-top: 40px; color: rgb(255,255,255);">{{_name}}</h1>
+                            <p class="lead" style="color: rgb(255,255,255);">@{{_screen_name}}</p>
+                        </div>
+
+                        <div class="col-sm-4 col-md-3 item" style="background-color: rgb(52,58,64); margin-top: 35px;">
+                            <p style="font-size: 24px;color: rgb(255,255,255);">{{_followers}} Followers</p>
+                            <p style="font-size: 24px;color: rgb(255,255,255);">{{_friends}} Following</p>
+                        </div>
+                        <div class="col" style="color: rgb(48,48,48);background-color: rgb(52,58,64); margin-top: 5px">
+                            <p style="color: rgb(255,255,255);font-size: 20px;margin-left: -90px;"><br>{{_description}}<br><br></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <table class="table table-hover table-dark" data-aos="zoom-in" data-aos-duration="600">
                 <thead>
                     <tr>
@@ -105,7 +129,7 @@
             <p class="text-center text-white m-0 small" style="padding-top: 12px;">Copyright&nbsp;© TweeTox 2021</p>
         </div>
     </footer>
-    
+
 
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='bootstrap/js/jquery.min.js') }}"></script>
