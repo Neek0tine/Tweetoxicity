@@ -76,12 +76,15 @@ def result_page():
         tweets_sentiment.append(_sentimentcount)
 
         _color = ''
+        _sentiment = ''
         if _accountsentiment == 'POSITIVE':
             _color = 'rgba(22, 160, 133, 0.78)'
+            _sentiment = f'Yeah, {_user} is pretty cool'
         else:
             _color = 'rgba(255, 99, 71, 0.78)'
+            _sentiment = f'{_user} needs a day off of Twitter. Or a week. Or a month.'
 
-        return render_template('result.html', username=_user, account_sentiment=_accountsentiment, color=_color)
+        return render_template('result.html', username=_user, account_sentiment=_sentiment, color=_color)
 
 
 @app.route("/result/details")
