@@ -52,7 +52,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 
 ## Authors
 **Supervisor : Ika Qutsiati Utami, S.Kom., M.Sc.**<br>
-* **Muhammad Reza Erfit** [RezaErfit](https://www.linkedin.com/in/muhammad-reza-erfit-40479a1b7/?originalSubdomain=id)
+* **Muhammad Reza Erfit** [RezaErfit](https://www.instagram.com/reza_erfit/)
 * **Fathurrahman Syarief** [austhopia](https://github.com/fathur-rs)
 * **Nalia Graciella Kerrysa** [NaliaGK](https://github.com/NaliaGK)
 * **Nicholas Juan Kalvin**  [Neek0tine](https://github.com/Neek0tine)
