@@ -8,6 +8,8 @@ import requests
 from flask.helpers import send_from_directory, url_for
 from scripts import app
 import os
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 from PIL import Image
@@ -22,6 +24,9 @@ tweets_sentiment = []
 @app.route("/", methods=["POST", "GET"])
 @app.route("/home", methods=["POST", "GET"])
 def home_page():
+    user.clear()
+    tweets.clear()
+    print('[+] Clean User and Tweets Cache')
     if request.method == "POST":
         _username = request.form.get("username")
         user.append(str(_username))
@@ -33,6 +38,9 @@ def home_page():
 
 @app.route("/about")
 def about_page():
+    user.clear()
+    tweets.clear()
+    print('[+] Clean User and Tweets Cache')
     return render_template('about.html')
 
 
@@ -90,6 +98,7 @@ def result_page():
 @app.route("/result/details")
 def resultdetails_page():
     Items = []
+    WRDCLOUD = []
     if userent is None:
 
         for tweet in tweets:
@@ -97,7 +106,7 @@ def resultdetails_page():
             Items = [(a, b, c) for a, b, c in zip(tweet['original text'], tweet['sentiment'], tweet['confidence'])]
 
             # Wordcloud
-            WORDCLOUD(tweet)
+            WRDCLOUD = WORDCLOUD(tweet)
 
         data = []
         for twt in tweets_sentiment:
@@ -134,13 +143,13 @@ def resultdetails_page():
                 if not block:
                     break
                 handle.write(block)
-
+    
         for tweet in tweets:
             # dataframe
             Items = [(a, b, c) for a, b, c in zip(tweet['original text'], tweet['sentiment'], tweet['confidence'])]
 
             # Wordcloud
-            WORDCLOUD(tweet)
+            WRDCLOUD = WORDCLOUD(tweet)
 
         data = []
         for twt in tweets_sentiment:
@@ -151,6 +160,7 @@ def resultdetails_page():
         return render_template('user_details.html',
                                items=Items,
                                dashboardPie=data,
+                               dashboardWC=WRDCLOUD,
                                _profile_pic=_profile_pic,
                                _screen_name=_screen_name,
                                _name=_name,
@@ -166,5 +176,5 @@ def download():
     for tweet in tweets:
         response = Response(tweet.to_csv(), mimetype='text/csv')
         response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
-        user.clear()
+        print('[+] Clean User and Tweets Cache')
         return response
