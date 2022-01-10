@@ -111,16 +111,26 @@ def account_sentiment(df):
     print('===DEBUG ACCOUNT SENTIMENT START===')
 
     df_count_sentiment = df['sentiment'].value_counts().to_frame()
+    
+    df_count = []
+    if (list(df_count_sentiment.index) == ['POSITIVE', 'NEGATIVE']) or (list(df_count_sentiment.index) == ['NEGATIVE', 'POSITIVE']):
+        df_count = df_count_sentiment
+    elif list(df_count_sentiment.index) == ['POSITIVE']:
+        df_count_sentiment.loc['NEGATIVE'] = 0
+        df_count = df_count_sentiment
+    elif list(df_count_sentiment.index) == ['NEGATIVE']:
+        df_count_sentiment.loc['POSITIVE'] = 0
+        df_count = df_count_sentiment
 
-    df_count_sentiment['percentage'] = round(
-        df_count_sentiment['sentiment'] / df_count_sentiment['sentiment'].sum() * 100, 2)
+    df_count['percentage'] = round(
+        df_count['sentiment'] / df_count['sentiment'].sum() * 100, 2)
 
-    df_count_sentiment = df_count_sentiment.reset_index().rename({'index': 'final_sentiment'}, axis=1)
+    df_count = df_count.reset_index().rename({'index': 'final_sentiment'}, axis=1)
 
-    sentiment_max = df_count_sentiment.loc[df_count_sentiment['sentiment'] == (df_count_sentiment['sentiment'].max()), 'final_sentiment'].iloc[0]
+    sentiment_max = df_count.loc[df_count['sentiment'] == (df_count['sentiment'].max()), 'final_sentiment'].iloc[0]
 
     print('===DEBUG ACCOUNT SENTIMENT END===')
-    return sentiment_max, df_count_sentiment
+    return sentiment_max, df_count
 
 
 def models_script(datas):
@@ -139,3 +149,12 @@ def models_script(datas):
 
     return models, sentiment_final, sentiment_count
 
+
+# def UnitTesting():
+#     _query = pd.DataFrame({
+#         'Text':['Hello my name is fathur']
+#     })
+    
+#     return models_script(_query)
+
+# UnitTesting()

@@ -47,4 +47,3 @@ def WORDCLOUD(df):
     return img_base64
     
     
-    # return WC.to_file('scripts/static/bootstrap/img/wordcloud.png')

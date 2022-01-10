@@ -1,19 +1,10 @@
-import pandas as pd
 from flask import render_template, request, redirect, Response
 from scripts.preprocess import models_script
 from scripts.tweepy_api import tweetox
 from scripts.wordcld import WORDCLOUD
-import requests
-# from .errors import defaultHandler
-from flask.helpers import send_from_directory, url_for
+# from scripts.errors import defaultHandler
+from flask.helpers import url_for
 from scripts import app
-import os
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-from wordcloud import WordCloud
-from PIL import Image
-import base64
 
 
 user = []
@@ -115,11 +106,10 @@ def resultdetails_page():
             NEGATIVE = int(twt.query("final_sentiment == 'NEGATIVE'")["sentiment"])
             data = {'Sentiment': 'Count', 'Positive': POSITIVE, 'Negative': NEGATIVE}
 
-        return render_template('result_details.html', items=Items, dashboardPie=data)
+        return render_template('result_details.html', items=Items, dashboardPie=data, dashboardWC=WRDCLOUD)
 
     else:
         _profile_pic = str(userent.profile_image_url)
-        print(_profile_pic)
         _screen_name = userent.screen_name
         _name = userent.name
         _location = userent.location
@@ -178,5 +168,5 @@ def download():
     for tweet in tweets:
         response = Response(tweet.to_csv(), mimetype='text/csv')
         response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
-        print('[+] Clean User and Tweets Cache')
         return response
+
