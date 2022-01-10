@@ -40,6 +40,7 @@ def cleaning(text):
     if len(text) > 1:
         text = ' '.join([lemma.lemmatize(word) for word in word_tokenize(text) if word not in stop_words])
     text = text.strip()
+    text = text.replace('rt', '')
 
     return text
 
