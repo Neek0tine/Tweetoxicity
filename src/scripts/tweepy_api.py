@@ -53,7 +53,7 @@ class tweetox:
             _user = ''
 
             try:
-                _search_result = _api.search_users(query, count=20)
+                _search_result = _api.search_users(query, count=1)
                 _user = _search_result[0]
                 print(f'[+] User found! {_user.screen_name}\n')
             except:
@@ -96,7 +96,7 @@ class tweetox:
 
         _query = self.query
         _api = self.api
-        _count = 100
+        _count = 150
 
         try:
             print(f'[+] Searching for {_query}')

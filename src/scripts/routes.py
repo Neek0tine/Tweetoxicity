@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, Response
 from scripts.preprocess import models_script
 from scripts.tweepy_api import tweetox
 from scripts.wordcld import WORDCLOUD
-# from scripts.errors import defaultHandler
+from scripts.errors import defaultHandler
 from flask.helpers import url_for
 from scripts import app
 
@@ -44,14 +44,11 @@ def result_page():
 
     if str(_user).startswith('@'):
         global userent
-        _tweetscrap, userent = (tweetox(_user).get_user_tweets())
-
-
-        # # try:
-        # #     _tweetscrap = (tweetox(user).get_user_tweets())[0]
-        # # except Exception as e:
-        # #     raise defaultHandler
-
+        try:
+            _tweetscrap, userent = (tweetox(_user).get_user_tweets())
+        except Exception as e:
+            raise defaultHandler
+        
         if _tweetscrap is None:
             print('[!] Could not find user timeline')
             _tweetscrap = None

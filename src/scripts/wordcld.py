@@ -12,12 +12,12 @@ import random
 import pandas as pd
 
 
-def readCSV():
-    path = r'C:\Users\fathu\Downloads\data (17).csv'
-    df = pd.read_csv(path)
-    df.replace("", NaN, inplace=True)
-    df.dropna(inplace=True)
-    return df
+# def readCSV():
+#     path = r'C:\Users\fathu\Downloads\data (17).csv'
+#     df = pd.read_csv(path)
+#     df.replace("", NaN, inplace=True)
+#     df.dropna(inplace=True)
+#     return df
 
 
 def grey_color_func(word, font_size, position, orientation, random_state=None,
