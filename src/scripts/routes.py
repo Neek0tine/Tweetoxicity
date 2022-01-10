@@ -13,6 +13,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 from PIL import Image
+import base64
 
 
 user = []
@@ -118,6 +119,7 @@ def resultdetails_page():
 
     else:
         _profile_pic = str(userent.profile_image_url)
+        print(_profile_pic)
         _screen_name = userent.screen_name
         _name = userent.name
         _location = userent.location
@@ -134,15 +136,15 @@ def resultdetails_page():
         _followers = human_format(userent.followers_count)
         _friends = human_format(userent.friends_count)
         _birth = userent.created_at
-
-        with open('scripts/static/bootstrap/img/pp.jpg', 'wb') as handle:
-            response = requests.get(_profile_pic, stream=True)
-            if not response.ok:
-                print(response)
-            for block in response.iter_content(1024):
-                if not block:
-                    break
-                handle.write(block)
+        
+        # with open('scripts/static/bootstrap/img/pp.jpg', 'wb') as handle:
+        #     response = requests.get(_profile_pic, stream=True)
+        #     if not response.ok:
+        #         print(response)
+        #     for block in response.iter_content(1024):
+        #         if not block:
+        #             break
+        #         handle.write(block)
     
         for tweet in tweets:
             # dataframe
