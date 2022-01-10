@@ -16,6 +16,9 @@ The scrapped data is then sent to the program which keeps the machine learning m
 
 The website will be made entirely with Bootstrap CSS Framework, using **Bootstrap Studio** application. The website is planned to have dynamic content movement that transforms dynamically depending on the user's device screen size. The use of dynamic and reactive website is a must since the data displayed will have different height and width, which static websites couldn't handle well. 
 
+After testing deployment on few cloud services, we have decided to host our program using DigitalOcean Virtual Machine, with the help of cloudflare as our CDN service. The final map should look like this:
+<img src="https://github.com/Neek0tine/Tweetoxicity/blob/main/assets/architecture%20and%20explanation-01-01.png" alt="netmap" width="1200"><br>
+
 ## Frequently Asked Question
 **Q : "This program sounds controversial"**<br>
 A : Yes. We couldn't hide the fact that making such program will spawn controversial discussions about the true nature of this program, however we are only interested in the use of Flask as an integral part of nowadays web applications. The idea behind the program itself is derived from other popular Twitter user analytic services, we just made them open-source and free.
@@ -49,7 +52,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 
 ## Authors
 **Supervisor : Ika Qutsiati Utami, S.Kom., M.Sc.**<br>
-* **Muhammad Reza Erfit** [RezaErfit](https://www.linkedin.com/in/muhammad-reza-erfit-40479a1b7/?originalSubdomain=id)
+* **Muhammad Reza Erfit** [RezaErfit](https://www.instagram.com/reza_erfit/)
 * **Fathurrahman Syarief** [austhopia](https://github.com/fathur-rs)
 * **Nalia Graciella Kerrysa** [NaliaGK](https://github.com/NaliaGK)
 * **Nicholas Juan Kalvin**  [Neek0tine](https://github.com/Neek0tine)
