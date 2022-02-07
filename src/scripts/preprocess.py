@@ -6,9 +6,12 @@ import os
 import emoji
 import nltk
 
+# nltk.download('all')
+
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+
 
 
 def cleaning(text):

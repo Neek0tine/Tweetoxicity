@@ -1,13 +1,18 @@
-from flask import render_template, request, redirect, Response
+from multiprocessing.connection import Client
+from flask import render_template, request, redirect, Response, Flask, session
+from pytest import Session
 from scripts.preprocess import models_script
 from scripts.tweepy_api import tweetox
 from scripts.wordcld import WORDCLOUD
-from scripts.errors import defaultHandler
+# from scripts.errors import defaultHandler
 from flask.helpers import url_for
-from scripts import app
+from scripts import Clients, Clients_Data, app
+from scripts import db
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import desc
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
+import pandas as pd
 
-
-user = []
 userent = []
 tweets = []
 tweets_sentiment = []
@@ -16,29 +21,35 @@ tweets_sentiment = []
 @app.route("/", methods=["POST", "GET"])
 @app.route("/home", methods=["POST", "GET"])
 def home_page():
-    user.clear()
     tweets.clear()
     print('[+] Clean User and Tweets Cache')
     if request.method == "POST":
         _username = request.form.get("username")
-        user.append(str(_username))
-        return redirect(url_for("result_page"))
+        client = Clients(username=_username)
+        db.session.add(client)
+        db.session.commit()
+
+        ids = db.session.query(Clients.id).order_by(desc(Clients.date_added)).first()
+
+        return redirect(url_for("result_page", var=ids[0]))
     else:
-        user.clear()
         return render_template('home.html')
 
 
 @app.route("/about")
 def about_page():
-    user.clear()
     tweets.clear()
     print('[+] Clean User and Tweets Cache')
     return render_template('about.html')
 
 
-@app.route("/result")
-def result_page():
-    _user = "".join(user)
+@app.route("/result/<var>", methods=['GET', 'POST'])
+def result_page(var):
+
+    usrname = db.session.query(Clients.username).filter(Clients.id == int(var)).first()
+
+    _user = usrname[0]
+
     print(f'[+] Getting tweets of {_user}')
     _tweetscrap = None
 
@@ -72,6 +83,11 @@ def result_page():
         tweets.append(_tweetmodels)
         tweets_sentiment.append(_sentimentcount)
 
+        js = _tweetmodels.to_json(orient='columns')
+        
+        db.session.add(Clients_Data(tweetmodel=js, user_id=int(var)))
+        db.session.commit()
+
         _color = ''
         _sentiment = ''
         if _accountsentiment == 'POSITIVE':
@@ -81,7 +97,7 @@ def result_page():
             _color = 'rgba(255, 99, 71, 0.78)'
             _sentiment = f'{_user} needs a day off of Twitter. Or a week. Or a month.'
 
-        return render_template('result.html', username=_user, account_sentiment=_sentiment, color=_color)
+        return render_template('result.html', username=usrname[0], account_sentiment=_sentiment, color=_color)
 
 
 @app.route("/result/details")

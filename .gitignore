@@ -1,3 +1,5 @@
 ﻿src/scripts/__pycache__
 artworks
 *.ipynb
+wordcloud-1.8.1-pp38-pypy38_pp73-win_amd64.whl
+requirements.txt
