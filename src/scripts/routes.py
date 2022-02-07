@@ -57,7 +57,7 @@ def result_page(var):
         global userent
         try:
             _tweetscrap, userent = (tweetox(_user).get_user_tweets())
-        except Exception as e:
+        except Exception:
             raise defaultHandler
         
         if _tweetscrap is None:
@@ -182,4 +182,3 @@ def download():
         response = Response(tweet.to_csv(), mimetype='text/csv')
         response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
         return response
-
