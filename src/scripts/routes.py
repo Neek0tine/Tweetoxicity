@@ -21,12 +21,10 @@ tweets_sentiment = []
 @app.route("/", methods=["POST", "GET"])
 @app.route("/home", methods=["POST", "GET"])
 def home_page():
-    tweets.clear()
-    print('[+] Clean User and Tweets Cache')
+    print('[+] Analyzing...')
     if request.method == "POST":
         _username = request.form.get("username")
-        client = Clients(username=_username)
-        db.session.add(client)
+        db.session.add(Clients(username=_username))
         db.session.commit()
 
         ids = db.session.query(Clients.id).order_by(desc(Clients.date_added)).first()
@@ -38,28 +36,22 @@ def home_page():
 
 @app.route("/about")
 def about_page():
-    tweets.clear()
-    print('[+] Clean User and Tweets Cache')
     return render_template('about.html')
 
 
 @app.route("/result/<var>", methods=['GET', 'POST'])
 def result_page(var):
-
     usrname = db.session.query(Clients.username).filter(Clients.id == int(var)).first()
-
     _user = usrname[0]
+    print(_user)
 
     print(f'[+] Getting tweets of {_user}')
     _tweetscrap = None
 
     if str(_user).startswith('@'):
         global userent
-        try:
-            _tweetscrap, userent = (tweetox(_user).get_user_tweets())
-        except Exception:
-            raise defaultHandler
-        
+        _tweetscrap, userent = (tweetox(_user, var).get_user_tweets())
+
         if _tweetscrap is None:
             print('[!] Could not find user timeline')
             _tweetscrap = None
@@ -84,8 +76,14 @@ def result_page(var):
         tweets_sentiment.append(_sentimentcount)
 
         js = _tweetmodels.to_json(orient='columns')
-        
-        db.session.add(Clients_Data(tweetmodel=js, user_id=int(var)))
+
+        # current_user = db.session.query(Clients_Data.tweetmodel).filter(Clients_Data.user_id == int(var)).where(
+        # Clients_Data.user_id==int(var))
+        # print(current_user)
+        # print(current_user[0])
+
+        # db.session.execute('UPDATE Clients_data SET tweetmodel = "%s" WHERE user_id = "%s"'% (js, var))
+        db.session.query(Clients_Data).filter(Clients_Data.user_id == int(var)).update({"tweetmodel": js})
         db.session.commit()
 
         _color = ''
@@ -139,7 +137,7 @@ def resultdetails_page():
         _followers = human_format(userent.followers_count)
         _friends = human_format(userent.friends_count)
         _birth = userent.created_at
-        
+
         # with open('scripts/static/bootstrap/img/pp.jpg', 'wb') as handle:
         #     response = requests.get(_profile_pic, stream=True)
         #     if not response.ok:
@@ -148,7 +146,7 @@ def resultdetails_page():
         #         if not block:
         #             break
         #         handle.write(block)
-    
+
         for tweet in tweets:
             # dataframe
             Items = [(a, b, c) for a, b, c in zip(tweet['original text'], tweet['sentiment'], tweet['confidence'])]
