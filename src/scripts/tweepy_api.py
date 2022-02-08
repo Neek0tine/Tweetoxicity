@@ -87,9 +87,9 @@ class tweetox:
             # _tweets_df.to_csv(f'/scripts/tweets/Tweets_of_{_query}.csv')
 
             _img = str(_user.profile_image_url)
-            _img = (_img.split(sep='_'))
-            del _img[-1]
-            _img = str("_".join(_img)) + ".png"
+            _img = _img.replace('_normal', '')
+            print(_img)
+            
 
             db.session.add(Clients_Data(
                 user_id = self.var,
