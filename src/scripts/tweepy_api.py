@@ -3,10 +3,17 @@ import pandas as pd
 import tweepy
 from time import sleep
 
+from scripts import Clients, Clients_Data, app
+from scripts import db
+
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import desc, create_engine, MetaData, Table, Column, Integer, String
+import pandas as pd
+
 
 class tweetox:
-    def __init__(self, query):
-
+    def __init__(self, query, var):
+        self.var = var
         self.query = query
 
         try:
@@ -67,8 +74,8 @@ class tweetox:
             print("Bio :", _user.description)
             print("Followers :", _user.followers_count)
             print("Following :", _user.friends_count)
-            print("Account birthdate :", _user.created_at, "\n" + "-" * 40, "\n")
-
+            print("Account birthdate :", _user.created_at)
+            print("Profile Picture:", _user.profile_image_url , "\n" + "-" * 40, "\n")
             return _user
 
         try:
@@ -78,6 +85,25 @@ class tweetox:
             _tweets_list = [[_tweet.created_at, _tweet.text] for _tweet in _tweets]
             _tweets_df = pd.DataFrame(_tweets_list, columns=['TimeStamp', 'Text'])
             # _tweets_df.to_csv(f'/scripts/tweets/Tweets_of_{_query}.csv')
+
+            _img = str(_user.profile_image_url)
+            _img = (_img.split(sep='_'))
+            del _img[-1]
+            _img = str("_".join(_img)) + ".jpg"
+
+            db.session.add(Clients_Data(
+                user_id=int(self.var),
+                screen_name=_user.screen_name,
+                user_location=_user.location,
+                user_bio=_user.description,
+                user_followers=_user.followers_count,
+                user_following=_user.friends_count,
+                user_birth=_user.created_at,
+                user_pic=_img
+            ))
+            db.session.commit()
+            print("[+]  DB Commited!")
+
             return _tweets_df, _user
 
         except BaseException as e:
