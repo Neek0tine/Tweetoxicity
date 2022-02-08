@@ -6,7 +6,7 @@ import os
 import emoji
 import nltk
 
-nltk.download('all')
+# nltk.download('all')
 
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize

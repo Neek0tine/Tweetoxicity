@@ -16,7 +16,14 @@ def random_integer():
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///client.db'
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+    'connect_args': {
+        'timeout': 1000000
+    }
+}
+
 db = SQLAlchemy(app)
+
 
 db.session.execute('CREATE TABLE IF NOT EXISTS clients (id INTEGER NOT NULL,"user_id"	INTEGER, username VARCHAR(100) NOT NULL,	date_added DATETIME, PRIMARY KEY (id))')
 db.session.execute('CREATE TABLE IF NOT EXISTS "clients__data" ("id"	INTEGER NOT NULL,"user_id"	INTEGER,"screen_name"	STRING,"user_name"  STRING,"user_location"	STRING,"user_bio"	STRING,"user_followers"	INTEGER,"user_following"	INTEGER,"user_birth"	INTEGER,"user_pic"	STRING,PRIMARY KEY("id"),FOREIGN KEY("user_id") REFERENCES "clients"("user_id"))')

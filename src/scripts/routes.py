@@ -43,7 +43,6 @@ def result_page(var):
     print(f'[+] Getting tweets of {_user}')
     if str(_user).startswith('@'):
         _tweetscrap, userent = (tweetox(_user, var).get_user_tweets())
-
         js1 = _tweetscrap.to_json()
 
         db.session.add(Clients_Input(
