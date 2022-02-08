@@ -146,7 +146,7 @@ def models_script(datas):
 
     # inisiasi predict
     models = predict(model, vetorizer, data)
-    print(models)
+    # print(models)
 
     sentiment_final, sentiment_count = account_sentiment(models)
 

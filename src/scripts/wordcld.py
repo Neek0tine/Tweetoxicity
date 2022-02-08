@@ -26,7 +26,7 @@ def grey_color_func(word, font_size, position, orientation, random_state=None,
 
 
 def WORDCLOUD(df):
-    file = " ".join(str(v) for v in df['clean text'])
+    file = " ".join(str(v) for v in df['value'])
     
     WC = WordCloud(
         font_path='scripts/static/bootstrap/font/AdobeCleanLight.otf',
