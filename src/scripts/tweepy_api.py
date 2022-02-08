@@ -89,7 +89,7 @@ class tweetox:
             _img = str(_user.profile_image_url)
             _img = (_img.split(sep='_'))
             del _img[-1]
-            _img = str("_".join(_img)) + ".jpg"
+            _img = str("_".join(_img)) + ".png"
 
             db.session.add(Clients_Data(
                 user_id = self.var,
