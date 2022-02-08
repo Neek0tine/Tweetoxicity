@@ -13,8 +13,8 @@ import pandas as pd
 
 class tweetox:
     def __init__(self, query, var):
-        self.var = var
         self.query = query
+        self.var = var
 
         try:
             print('[+] Authenticating ...')
@@ -87,13 +87,14 @@ class tweetox:
             # _tweets_df.to_csv(f'/scripts/tweets/Tweets_of_{_query}.csv')
 
             _img = str(_user.profile_image_url)
-            _img = (_img.split(sep='_'))
-            del _img[-1]
-            _img = str("_".join(_img)) + ".jpg"
+            _img = _img.replace('_normal', '')
+            print(_img)
+            
 
             db.session.add(Clients_Data(
-                user_id=int(self.var),
+                user_id = self.var,
                 screen_name=_user.screen_name,
+                user_name = _user.name,
                 user_location=_user.location,
                 user_bio=_user.description,
                 user_followers=_user.followers_count,
