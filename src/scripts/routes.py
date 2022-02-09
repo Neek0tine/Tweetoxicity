@@ -162,9 +162,11 @@ def resultdetails_page(var):
             POSITIVE = CLIENT_INPUT.positive
             NEGATIVE = CLIENT_INPUT.negative
 
+            _screen_name = CLIENT.username
+
             data = {'Sentiment': 'Count', 'Positive': POSITIVE, 'Negative': NEGATIVE}
 
-            return render_template('result_details.html', items=Items, dashboardPie=data, dashboardWC=WRDCLOUD)
+            return render_template('result_details.html', items=Items, dashboardPie=data, dashboardWC=WRDCLOUD, _screen_name=_screen_name)
 
         else:
 
