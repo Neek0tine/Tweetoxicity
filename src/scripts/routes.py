@@ -236,11 +236,11 @@ def resultdetails_page(var):
 @app.route("/result/<var>/details/download", methods=['GET', 'POST'])
 def download_page(var):
     CLIENT_INPUT = db.session.query(Clients_Input).filter(Clients_Input.user_id == int(var)).first()
-    CLIENT = db.session.query(Clients).filter(Clients.user_id == int(var)).first()
+    CLIENT_DATA = db.session.query(Clients_Data).filter(Clients_Data.user_id == int(var)).first()
 
 
     # db
-    USERNAME = CLIENT.username
+    USERNAME = CLIENT_DATA.screen_name
     TWEETMODEL = CLIENT_INPUT.tweetmodel
     tweetmodel_json = json.loads(TWEETMODEL)
 
@@ -266,6 +266,6 @@ def download_page(var):
     df_final.columns = columns
 
     response = Response(df_final.to_csv(), mimetype='text/csv')
-    response.headers['Content-Disposition'] = f'attachment; filename={USERNAME}_data.csv'
+    response.headers['Content-Disposition'] = f'attachment; filename=@{USERNAME}_data.csv'
 
     return response
