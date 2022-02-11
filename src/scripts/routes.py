@@ -12,7 +12,6 @@ import pandas as pd
 import json
 
 
-
 @app.route("/", methods=["POST", "GET"])
 @app.route("/home", methods=["POST", "GET"])
 def home_page():
@@ -46,8 +45,8 @@ def result_page(var):
         js1 = _tweetscrap.to_json()
 
         db.session.add(Clients_Input(
-            tweetscrap = js1,
-            user_id = var
+            tweetscrap=js1,
+            user_id=var
         ))
 
         # Query db
@@ -64,8 +63,8 @@ def result_page(var):
         js1 = _tweetscrap.to_json()
 
         db.session.add(Clients_Input(
-            tweetscrap = js1,
-            user_id = var
+            tweetscrap=js1,
+            user_id=var
         ))
 
         # Query db
@@ -75,7 +74,6 @@ def result_page(var):
             print('[!] Could not find any tweets related to tag!')
         else:
             pass
-    
 
     CLIENT_INPUT = db.session.query(Clients_Input).filter(Clients_Input.user_id == int(var)).first()
     if CLIENT_INPUT.tweetscrap is None:
@@ -90,14 +88,13 @@ def result_page(var):
             TWEETSCRAP = CLIENT_INPUT.tweetscrap
             _tweetscrap_json = json.loads(TWEETSCRAP)
             _tweetscrap_json_normalize = pd.json_normalize(_tweetscrap_json['Text'])
-            
+
             tweetscrap = _tweetscrap_json_normalize.melt(var_name=['id'])
 
-            tweetscrap = tweetscrap.rename({'value':'Text'},axis=1)
+            tweetscrap = tweetscrap.rename({'value': 'Text'}, axis=1)
 
             # Model
             _tweetmodels, _accountsentiment, _sentimentcount = models_script(tweetscrap)
-
 
             # db
             POSITIVE = int(_sentimentcount.query("final_sentiment == 'POSITIVE'")["sentiment"])
@@ -120,7 +117,6 @@ def result_page(var):
             else:
                 _color = 'rgba(255, 99, 71, 0.78)'
                 _sentiment = f'{_user} needs a day off of Twitter. Or a week. Or a month.'
-            
 
             return render_template('result.html', username=usrname[0], account_sentiment=_sentiment, color=_color)
 
@@ -134,7 +130,7 @@ def resultdetails_page(var):
         return redirect(url_for('download_page', var=int(var)))
     else:
         if not str(CLIENT.username).startswith('@'):
-            
+
             # db
             TWEETMODEL = CLIENT_INPUT.tweetmodel
             tweetmodel_json = json.loads(TWEETMODEL)
@@ -166,7 +162,8 @@ def resultdetails_page(var):
 
             data = {'Sentiment': 'Count', 'Positive': POSITIVE, 'Negative': NEGATIVE}
 
-            return render_template('result_details.html', items=Items, dashboardPie=data, dashboardWC=WRDCLOUD, _screen_name=_screen_name)
+            return render_template('result_details.html', items=Items, dashboardPie=data, dashboardWC=WRDCLOUD,
+                                   _screen_name=_screen_name)
 
         else:
 
@@ -207,7 +204,6 @@ def resultdetails_page(var):
             confidence = pd.json_normalize(tweetmodel_json['confidence'])
             confidence = confidence.melt(var_name=['id'])
 
-
             Items = [(a, b, c) for a, b, c in zip(original_text['value'], sentiment['value'], confidence['value'])]
 
             WRDCLOUD = WORDCLOUD(clean_text)
@@ -217,27 +213,24 @@ def resultdetails_page(var):
 
             data = {'Sentiment': 'Count', 'Positive': POSITIVE, 'Negative': NEGATIVE}
 
-
             return render_template('user_details.html',
-                                items=Items,
-                                dashboardPie=data,
-                                dashboardWC=WRDCLOUD,
-                                _profile_pic=_profile_pic,
-                                _screen_name=_screen_name,
-                                _name=_name,
-                                _location=_location,
-                                _description=_description,
-                                _followers=_followers,
-                                _friends=_friends,
-                                _birth=_birth)
-        
+                                   items=Items,
+                                   dashboardPie=data,
+                                   dashboardWC=WRDCLOUD,
+                                   _profile_pic=_profile_pic,
+                                   _screen_name=_screen_name,
+                                   _name=_name,
+                                   _location=_location,
+                                   _description=_description,
+                                   _followers=_followers,
+                                   _friends=_friends,
+                                   _birth=_birth)
 
 
 @app.route("/result/<var>/details/download", methods=['GET', 'POST'])
 def download_page(var):
     CLIENT_INPUT = db.session.query(Clients_Input).filter(Clients_Input.user_id == int(var)).first()
     CLIENT_DATA = db.session.query(Clients_Data).filter(Clients_Data.user_id == int(var)).first()
-
 
     # db
     USERNAME = CLIENT_DATA.screen_name
@@ -260,8 +253,8 @@ def download_page(var):
     confidence = pd.json_normalize(tweetmodel_json['confidence'])
     confidence = confidence.melt(var_name=['id'])
 
-    #merge
-    df_final = pd.concat([original_text['value'], clean_text['value'], sentiment['value'], confidence['value']],axis=1)
+    # merge
+    df_final = pd.concat([original_text['value'], clean_text['value'], sentiment['value'], confidence['value']], axis=1)
     columns = ['Original Text', 'Clean Text', 'Sentiment', 'Confidence']
     df_final.columns = columns
 
