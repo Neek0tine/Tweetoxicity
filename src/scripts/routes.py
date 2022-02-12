@@ -41,51 +41,51 @@ def about_page():
 def result_page(var):
     usrname = db.session.query(Clients.username).filter(Clients.user_id == int(var)).first()
     _user = usrname[0]
-    print(_user)
 
-    print(f'[+] Getting tweets of {_user}')
-    if str(_user).startswith('@'):
-        _tweetscrap, userent = (tweetox(_user, var).get_user_tweets())
-        js1 = _tweetscrap.to_json()
-
-        db.session.add(Clients_Input(
-            tweetscrap=js1,
-            user_id=var
-        ))
-
-        # Query db
-        CLIENT_INPUT = db.session.query(Clients_Input).filter(Clients_Input.user_id == int(var)).first()
-
-        if CLIENT_INPUT.tweetscrap is None:
-            print('[!] Could not find user timeline')
-        else:
-            pass
+    if request.method == 'POST':
+        return redirect(url_for("resultdetails_page", var=int(var)))
 
     else:
-        _tweetscrap = tweetox(_user, var).get_tweets()
+        print(f'[+] Getting tweets of {_user}')
+        if str(_user).startswith('@'):
+            _tweetscrap, userent = (tweetox(_user, var).get_user_tweets())
+            js1 = _tweetscrap.to_json()
 
-        js1 = _tweetscrap.to_json()
+            db.session.add(Clients_Input(
+                tweetscrap=js1,
+                user_id=var
+            ))
 
-        db.session.add(Clients_Input(
-            tweetscrap=js1,
-            user_id=var
-        ))
+            # Query db
+            CLIENT_INPUT = db.session.query(Clients_Input).filter(Clients_Input.user_id == int(var)).first()
 
-        # Query db
-        CLIENT_INPUT = db.session.query(Clients_Input).filter(Clients_Input.user_id == int(var)).first()
+            if CLIENT_INPUT.tweetscrap is None:
+                print('[!] Could not find user timeline')
+            else:
+                pass
 
-        if CLIENT_INPUT.tweetscrap is None:
-            print('[!] Could not find any tweets related to tag!')
         else:
-            pass
+            _tweetscrap = tweetox(_user, var).get_tweets()
 
-    CLIENT_INPUT = db.session.query(Clients_Input).filter(Clients_Input.user_id == int(var)).first()
-    if CLIENT_INPUT.tweetscrap is None:
-        print('[!] User/Tag doesnt have tweets')
-        return render_template('tweets_null.html', username=_user)
-    else:
-        if request.method == 'POST':
-            return redirect(url_for("resultdetails_page", var=int(var)))
+            js1 = _tweetscrap.to_json()
+
+            db.session.add(Clients_Input(
+                tweetscrap=js1,
+                user_id=var
+            ))
+
+            # Query db
+            CLIENT_INPUT = db.session.query(Clients_Input).filter(Clients_Input.user_id == int(var)).first()
+
+            if CLIENT_INPUT.tweetscrap is None:
+                print('[!] Could not find any tweets related to tag!')
+            else:
+                pass
+
+        CLIENT_INPUT = db.session.query(Clients_Input).filter(Clients_Input.user_id == int(var)).first()
+        if CLIENT_INPUT.tweetscrap is None:
+            print('[!] User/Tag doesnt have tweets')
+            return render_template('tweets_null.html', username=_user)
         else:
             # db
             CLIENT_INPUT = db.session.query(Clients_Input).filter(Clients_Input.user_id == int(var)).first()

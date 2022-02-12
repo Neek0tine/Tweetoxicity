@@ -88,8 +88,6 @@ class tweetox:
 
             _img = str(_user.profile_image_url)
             _img = _img.replace('_normal', '')
-            print(_img)
-            
 
             db.session.add(Clients_Data(
                 user_id = self.var,
