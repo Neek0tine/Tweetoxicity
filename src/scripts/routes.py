@@ -17,7 +17,7 @@ import json
 @app.route("/", methods=["POST", "GET"])
 @app.route("/home", methods=["POST", "GET"])
 def home_page():
-    print(f'[GET] [{datetime.datetime.now()}] Connection from {request.remote_addr}')
+    print(f'[+] [GET] [{datetime.datetime.now()}] Connection from {request.remote_addr}')
 
     if request.method == "POST":
         _username = request.form.get("username")
@@ -25,8 +25,7 @@ def home_page():
         db.session.commit()
 
         unique_id = db.session.query(Clients.user_id).order_by(desc(Clients.date_added)).first()
-        print(f'[+] [{datetime.datetime.now()}] User ID {unique_id[0]} set to {request.remote_addr}')
-        print(f'[POST] [{datetime.datetime.now()}] User ID {unique_id[0]} @ {request.remote_addr} requested analysis for {_username} \n')
+        print(f'[+] [POST] [{datetime.datetime.now()}] {request.remote_addr} requested analysis for {_username} \n')
         return redirect(url_for("result_page", var=unique_id[0]))
     else:
         return render_template('home.html')
@@ -46,7 +45,7 @@ def result_page(var):
         return redirect(url_for("resultdetails_page", var=int(var)))
 
     else:
-        print(f'[+] Getting tweets of {_user}')
+        print(f'[+] [{datetime.datetime.now()}] {request.remote_addr} requested tweets of {_user}')
         if str(_user).startswith('@'):
             _tweetscrap, userent = (tweetox(_user, var).get_user_tweets())
             js1 = _tweetscrap.to_json()
@@ -60,7 +59,7 @@ def result_page(var):
             CLIENT_INPUT = db.session.query(Clients_Input).filter(Clients_Input.user_id == int(var)).first()
 
             if CLIENT_INPUT.tweetscrap is None:
-                print('[!] Could not find user timeline')
+                print(f'[!] [{datetime.datetime.now()}] {request.remote_addr} Could not find user timeline')
             else:
                 pass
 
@@ -78,13 +77,13 @@ def result_page(var):
             CLIENT_INPUT = db.session.query(Clients_Input).filter(Clients_Input.user_id == int(var)).first()
 
             if CLIENT_INPUT.tweetscrap is None:
-                print('[!] Could not find any tweets related to tag!')
+                print(f'[!] [{datetime.datetime.now()}] {request.remote_addr} Could not find any tweets related to tag!')
             else:
                 pass
 
         CLIENT_INPUT = db.session.query(Clients_Input).filter(Clients_Input.user_id == int(var)).first()
         if CLIENT_INPUT.tweetscrap is None:
-            print('[!] User/Tag doesnt have tweets')
+            print(f'[!] [{datetime.datetime.now()}] {request.remote_addr} User/Tag doesnt have tweets')
             return render_template('tweets_null.html', username=_user)
         else:
             # db
@@ -233,6 +232,7 @@ def resultdetails_page(var):
 
 @app.route("/result/<var>/details/download", methods=['GET', 'POST'])
 def download_page(var):
+    print(f'[+] [{datetime.datetime.now()}] {request.remote_addr} requested Download')
     CLIENT_INPUT = db.session.query(Clients_Input).filter(Clients_Input.user_id == int(var)).first()
     CLIENT_DATA = db.session.query(Clients_Data).filter(Clients_Data.user_id == int(var)).first()
 

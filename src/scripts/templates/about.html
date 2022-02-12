@@ -12,22 +12,21 @@
 </head>
 
 <body>
-    <header class="text-center text-white masthead" style="background: url('static/bootstrap/img/home-bg.png') center / cover;">
-        <div class="overlay"></div>
+    <header class="text-center text-white masthead">
         <div class="container">
             <div class="row">
                 <div class="col-xl-9 align-self-center mx-auto">
-                    <h1 data-aos="fade-up" data-aos-duration="600" data-aos-once="true" class="mb-5" style="margin: 0px;margin-bottom: 0px;margin-top: 48px;padding: 92px;">Learn more about TweeTox</h1>
+                    <h1 data-aos="fade-up" data-aos-duration="600" data-aos-once="true" class="mb-5" style="margin: 0px;margin-bottom: 0px;margin-top: 48px; font-size:6vh;">Learn more about Tweetoxicity</h1>
                     <h1 class="mb-5"></h1>
                 </div>
             </div>
         </div>
-            <nav class="navbar navbar-dark navbar-expand-lg fixed-top navbar-custom" data-aos="slide-down" data-aos-duration="600" style="background: #292F33;">
-        <div class="container"><a class="navbar-brand" href="{{ url_for('home_page') }}">TweeTox</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
+        <nav id="navbar" class="navbar navbar-dark navbar-expand-lg fixed-top navbar-custom" data-aos="slide-down" data-aos-duration="600" style="top: 0; transition: top 0.7s;">
+        <div class="container"><a class="navbar-brand" href="{{ url_for('home_page') }}">Tweetoxicity</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home_page') }}" style="color: rgb(255,255,255);">HOME</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('about_page') }}" style="color: rgb(255,255,255);">ABOUT</a></li>
+                <ul id="nav-link" class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home_page') }}" style="text-align: left; color: rgb(255,255,255);">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('about_page') }}" style="text-align: left; color: rgb(255,255,255);">ABOUT</a></li>
                 </ul>
             </div>
         </div>
@@ -37,31 +36,31 @@
         <div class="container-fluid p-0">
         <div class="container-fluid p-0">
             <div class="row no-gutters" style="background: #131921;">
-                <div class="col-lg-6 text-white order-lg-2 showcase-img" style="background: url('static/bootstrap/img/rsz_1tweetox.png') center / cover;"><span></span></div>
+                <div class="col-lg-6 text-white order-lg-2 showcase-img" style="background: url('static/bootstrap/img/twittoxtrans.png') center / contain no-repeat;"><span></span></div>
                 <div class="col-lg-6 my-auto order-lg-1 showcase-text" style="padding: 82px;background: #131921;color: rgb(255,255,255);">
-                    <h2 data-aos="fade-up" data-aos-duration="600" data-aos-once="true" style="color: rgb(255,255,255);">What is TweeTox ?</h2>
-                    <p class="lead mb-0" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" data-aos-once="true" style="font-size: 20px;color: rgb(255,255,255);"><strong>TweeTox&nbsp;</strong>is a program that analyses twitter user behavior through their actions on their Twitter Profile. The program utilize machine learning to give Twitter users appropriate score according to their tweets or retweets. This program is meant for educational purposes and no ill intentions exists prior to creating this program.<br></p>
+                    <h2 data-aos="fade-up" data-aos-duration="600" data-aos-once="true" style="text-align: center; color: rgb(255,255,255);">What is Tweetoxicity ?</h2>
+                    <p class="lead mb-0" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" data-aos-once="true" style="text-align: justify; font-size: 20px;color: rgb(255,255,255);"><strong>Tweetoxicity&nbsp;</strong>is a program that analyses Twitter user behavior through their actions on their Twitter Profile. The program utilizes machine learning to give Twitter users appropriate score according to their tweets or retweets. This program is meant for educational purposes and no ill intentions exist prior to creating this program.<br></p>
                 </div>
             </div>
             <div class="row no-gutters" style="background: #131921;">
-                <div class="col-lg-6 text-white showcase-img" style="background: url('static/bootstrap/img/ai.png') center / cover no-repeat;"><span></span></div>
+                <div class="col-lg-6 text-white showcase-img" style="background: url('static/bootstrap/img/ai_fix.png') center / contain no-repeat;"><span></span></div>
                 <div class="col-lg-6 my-auto order-lg-1 showcase-text" style="padding: 82px;background: #131921;">
-                    <h2 data-aos="fade-up" data-aos-duration="600" data-aos-once="true" style="color: rgb(255,255,255);">Sentiment Analysis</h2>
-                    <p class="lead mb-0" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" data-aos-once="true" style="font-size: 20px;color: rgb(255,255,255);">Using Sentiment Analysis, an NLP technique, Tweetox could analyze whether the user has a high behavior score or not, from the user's tweets. Results use several different tests to find the most confident score. This does not mean that the user is bad or not, but an analysis of their behavior on twitter.<br></p>
+                    <h2 data-aos="fade-up" data-aos-duration="600" data-aos-once="true" style="text-align: center; color: rgb(255,255,255);">Sentiment Analysis</h2>
+                    <p class="lead mb-0" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" data-aos-once="true" style="text-align: justify; font-size: 20px;color: rgb(255,255,255);">Using Sentiment Analysis, an NLP technique, Tweetoxicity can analyze whether the user has a high behavior score or not from the user's tweets. Results use different tests to find the most confident score. This does not indicate whether the user is bad or not, but instead provides an alaysis on their behavior on Twitter.<br></p>
                 </div>
             </div>
             <div class="row no-gutters" style="background: #131921;">
-                <div class="col-lg-6 text-white order-lg-2 showcase-img" style="background: url('static/bootstrap/img/api.png') center / cover;"><span></span></div>
+                <div class="col-lg-6 text-white order-lg-2 showcase-img" style="background: url('static/bootstrap/img/api_fix.png') center / contain no-repeat;"><span></span></div>
                 <div class="col-lg-6 my-auto order-lg-1 showcase-text" style="padding: 82px;background: #131921;">
-                    <h2 data-aos="fade-up" data-aos-duration="600" data-aos-once="true" style="color: rgb(255,255,255);">Twitter API</h2>
-                    <p class="lead mb-0" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" data-aos-once="true" style="font-size: 20px;color: rgb(255,255,255);">The program also utilize&nbsp;Twitter API&nbsp;to scrap data from Twitter&nbsp;officially. In case of API failure or Authorization failures,&nbsp;Requests&nbsp;module will be used to manually scrap the data from Twitter, of course at a price of reduced request amount and increased time interval as to not be intrusive to Twitter. The scrapped data is then sent to the program which keeps the machine learning model, and asks the program politely to assess the given user with its already made model through extensive training.<br></p>
+                    <h2 data-aos="fade-up" data-aos-duration="600" data-aos-once="true" style="text-align: center; color: rgb(255,255,255);">Twitter API</h2>
+                    <p class="lead mb-0" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" data-aos-once="true" style="text-align: justify; font-size: 20px;color: rgb(255,255,255);">The program also utilizes Twitter API&nbsp;to scrape data from Twitter&nbsp;officially. In case of API failure or Authorization failures,&nbsp;Requests&nbsp;module will be used to manually scrape the data from Twitter, of course at a price of reduced request amount and increased time interval as to not be intrusive to Twitter. The scraped data is then sent to the program which keeps the machine learning model, and asks the program politely to assess the given user with its already made model through extensive training.<br></p>
                 </div>
             </div>
         </div>
     </section>
     <footer style="background: #292F33;height: 43.2px;">
         <div class="container">
-            <p class="text-center text-white m-0 small" style="padding-top: 12px;">Copyright&nbsp;© TweeTox 2021</p>
+            <p class="text-center text-white m-0 small" style="padding-top: 12px;">Copyright&nbsp;© Tweetoxicity 2021</p>
         </div>
     </footer>
     <script src="../static/bootstrap/js/jquery.min.js"></script>
