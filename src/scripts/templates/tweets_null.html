@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html prefix="og: http://ogp.me/ns#">
 
 <head >
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Tweetoxicity - Error</title>
+
+    <meta property="og:type" content="website"><!-- "og:type" can be omitted for 'website' (is default), required for other types: http://ogp.me/#types -->
+    <meta property="og:url" content="https://tweetoxicity.xyz">
+    <meta property="og:title" content="Tweetoxicity">
+    <meta property="og:description" content="Wondering how the people of Twitter feel about something?">
+    <meta property="og:image" content="url('static/bootstrap/img/seo-image.png')">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="Tweetoxicity">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="627">
+    <meta property="og:site_name" content="Tweetoxicity">
+
     <meta name="description" content="Wondering how the people of Twitter feel about something?">
     <link rel="icon" href="{{ url_for('static', filename='bootstrap/img/twitox-favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
