@@ -15,6 +15,7 @@ def random_integer():
 
 
 app = Flask(__name__)
+print(f'[+] Root directory : {app.root_path}')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///client.db'
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
     'connect_args': {
