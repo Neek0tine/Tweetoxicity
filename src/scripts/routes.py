@@ -1,3 +1,5 @@
+import time
+import datetime
 from multiprocessing.connection import Client
 from flask import render_template, request, redirect, Response
 from scripts.preprocess import models_script
@@ -15,14 +17,16 @@ import json
 @app.route("/", methods=["POST", "GET"])
 @app.route("/home", methods=["POST", "GET"])
 def home_page():
-    print('[+] Analyzing...')
+    print(f'[GET] [{datetime.datetime.now()}] Connection from {request.remote_addr}')
+
     if request.method == "POST":
         _username = request.form.get("username")
         db.session.add(Clients(username=_username))
         db.session.commit()
 
         unique_id = db.session.query(Clients.user_id).order_by(desc(Clients.date_added)).first()
-
+        print(f'[+] [{datetime.datetime.now()}] User ID {unique_id[0]} set to {request.remote_addr}')
+        print(f'[POST] [{datetime.datetime.now()}] User ID {unique_id[0]} @ {request.remote_addr} requested analysis for {_username} \n')
         return redirect(url_for("result_page", var=unique_id[0]))
     else:
         return render_template('home.html')
