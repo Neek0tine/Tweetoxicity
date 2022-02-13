@@ -2040,7 +2040,7 @@ pre code {
 	.table-responsive-sm {
 		display: block;
 		width: 100%;
-		overflow-x: auto;
+		overflow-x: 	;
 		-webkit-overflow-scrolling: touch
 	}
 	.table-responsive-sm>.table-bordered {
@@ -4407,6 +4407,7 @@ input[type=submit].btn-block {
 	display: block;
 	padding: .5rem 1rem;
 	margin-left: 20px;
+	display: inline-block;
 }
 
 .nav-link:focus,
@@ -4575,7 +4576,8 @@ input[type=submit].btn-block {
 	background-color: transparent;
 	margin-right: 20px;
 	border: 1px solid transparent;
-	border-radius: .25rem
+	border-radius: .25rem;
+	display: inline-block;
 }
 
 .navbar-toggler:focus,
