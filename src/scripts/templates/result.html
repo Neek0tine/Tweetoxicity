@@ -61,8 +61,8 @@
 
 </head>
 
-<body>
-     <nav id="navbar" class="navbar navbar-dark navbar-expand-lg fixed-top navbar-custom" data-aos="slide-down" data-aos-duration="600" style="top: 0; transition: top 0.7s;">
+<body style="background: #292F33">
+    <nav id="navbar" class="navbar navbar-dark navbar-expand-lg fixed-top navbar-custom" data-aos="slide-down" data-aos-duration="600" style="top: 0; transition: top 0.7s;">
         <div class="container"><a class="navbar-brand" href="{{ url_for('home_page') }}">Tweetoxicity</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul id="nav-link" class="navbar-nav ml-auto">
@@ -76,15 +76,15 @@
         <div class="container-fluid" id="loading" style="display: none; margin-top: auto; margin-bottom: 77px; padding-top: 100px">
             <img src="/static/bootstrap/img/analyzing.gif" alt="Loadinglmao" width="auto" height="400px">
         </div> 
-        <div id="content" class="masthead-content"> 
-        <div class="container" style="margin-top: 100px; margin-bottom: 150px;">
+        <div id="content" style="display: block; margin-top: 0px; margin-bottom: 180px; padding-top: 100px">
+            <div class="container">
             <div class="jumbotron" data-aos="zoom-in-up" data-aos-duration="650" data-aos-delay="400" style="background: rgba(48,61,71,0.78);border-style: solid;">
                 <h1 style="color: #ffffff;font-size: 60px;">{{ username }} Analysis</h1>
                 <p style="color: #ffffff;font-size: 23px;">{{ account_sentiment }}</p>
                 <!-- <p style="color: #ffffff;font-size: 23px;">Yep ! I think {{ username }} needs a day off...</p> -->
                 <div class="d-flex justify-content-center">
                     <form method="POST">
-                    <button type="submit" id="submit_detail" data-aos="zoom-in-up" data-aos-duration="650" data-aos-delay="400" class="btn btn-primary " onclick="loading();"  style="background: var(--blue);border-style: none;font-size: 20px;font-family: Lato, sans-serif;margin-top: 12px;">Detailed Result</button>
+                    <button type="submit" id="submit_detail" data-aos-duration="650" data-aos-delay="400" class="btn btn-primary " onclick="loading();"  style="background: var(--blue);border-style: none;font-size: 20px;font-family: Lato, sans-serif;margin-top: 12px;">Detailed Result</button>
                     </form>
                 </div>
             </div>

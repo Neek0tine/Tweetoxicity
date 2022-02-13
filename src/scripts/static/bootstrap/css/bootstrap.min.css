@@ -91,6 +91,15 @@ hr {
 	overflow: visible
 }
 
+h1{
+	word-wrap: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	-o-hyphens: auto;
+	hyphens: auto;
+}
+
 h1,
 h2,
 h3,
@@ -591,7 +600,9 @@ pre code {
 	padding-right: 15px;
 	padding-left: 15px;
 	margin-right: auto;
-	margin-left: auto
+	margin-left: auto;
+	padding-top: auto;
+	padding-bottom: auto;
 }
 
 @media (min-width:576px) {
@@ -10592,8 +10603,8 @@ header.masthead {
 	position: relative;
 	background-color: #131921;
 	background-size: cover;
-	padding-top: 8rem;
-	padding-bottom: 8rem
+	padding-top: 100%;
+	padding-bottom: 100%
 }
 
 header.masthead .overlay {
