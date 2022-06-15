@@ -1,8 +1,11 @@
+<a href="https://tweetoxicity.xyz"><img src="https://img.shields.io/badge/DEMO-Click%20here%20to%20test%20our%20model!-green"></a> 
+<a href="https://github.com/Neek0tine/Tweetoxicity/issues"><img src="https://img.shields.io/github/issues/Neek0tine/Tweetoxicity"></a>
+<a href="https://github.com/Neek0tine/Tweetoxicity/blob/main/LICENSE" ><img src="https://img.shields.io/github/license/Neek0tine/Tweetoxicity"></a>
+<a href="https://github.com/Neek0tine/Tweetoxicity/commits/main"><img src="https://img.shields.io/github/commit-activity/m/Neek0tine/Tweetoxicity"></a>
+<a href="https://tweetoxicity.xyz"><img src="https://img.shields.io/uptimerobot/ratio/m792014252-33da762353bb3e907f52259a"></a>
+<img src="https://img.shields.io/security-headers?url=https%3A%2F%2Fsecurityheaders.com%2F%3Fq%3DTweetoxicity.xyz%26followRedirects%3Don">
 
-
-
-
-<img src="https://github.com/Neek0tine/Tweetoxicity/blob/main/assets/toxicitytweet.png" alt="TweeToxicity" width="800"/><br>
+<a href="https://tweetoxicity.xyz"><img src="https://github.com/Neek0tine/Tweetoxicity/blob/main/assets/toxicitytweet.png" alt="TweeToxicity" width="800"/></a><br>
 ## What is it?
 **TweeToxicity** is a program that analyzes user behavior on thr social media platform Twitter through their actions on their Twitter Profile. The program utilizes machine learning to give Twitter users an appropriate score according to their tweets or retweets. This program is meant for educational purposes and no ill intetions existed prior to creating this program.
 
@@ -64,6 +67,5 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 
 Pull requests are welcome. For major changes, how-to, and in-depth explanation, please contact one of the authors.
 ## License
-![PyPI - License](https://img.shields.io/pypi/l/PyCl)
 <br>
-This project is licensed under MIT License - see the [LICENSE](https://github.com/Neek0tine/Tweetoxicity/blob/main/LICENSE) file for details
+This project is licensed under GNU General Public License v3.0 - see the [LICENSE](https://github.com/Neek0tine/Tweetoxicity/blob/main/LICENSE) file for details.
