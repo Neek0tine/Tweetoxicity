@@ -57,8 +57,8 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 * **Nicholas Juan Kalvin**  [Neek0tine](https://github.com/Neek0tine)
 
 ## Contributors
-* **Vincent A.** [Tonald Drump]([https://www.instagram.com/reza_erfit/](https://www.instagram.com/bababooey_sfx_2/))
-* **Dhaval C. K.** [PIRATE]([https://github.com/fathur-rs](https://www.instagram.com/dhavalck/))
+* **Vincent A.** [Tonald Drump](https://www.instagram.com/bababooey_sfx_2/)
+* **Dhaval C. K.** [PIRATE](https://www.instagram.com/dhavalck/)
 
 ## Contributing
 
