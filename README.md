@@ -3,7 +3,7 @@
 <a href="https://github.com/Neek0tine/Tweetoxicity/blob/main/LICENSE" ><img src="https://img.shields.io/github/license/Neek0tine/Tweetoxicity"></a>
 <a href="https://github.com/Neek0tine/Tweetoxicity/commits/main"><img src="https://img.shields.io/github/commit-activity/m/Neek0tine/Tweetoxicity"></a>
 <a href="https://tweetoxicity.xyz"><img src="https://img.shields.io/uptimerobot/ratio/m792014252-33da762353bb3e907f52259a"></a>
-<img src="https://img.shields.io/security-headers?url=https%3A%2F%2Fsecurityheaders.com%2F%3Fq%3DTweetoxicity.xyz%26followRedirects%3Don">
+
 
 <a href="https://tweetoxicity.xyz"><img src="https://github.com/Neek0tine/Tweetoxicity/blob/main/assets/toxicitytweet.png" alt="TweeToxicity" width="800"/></a><br>
 ## What is it?
